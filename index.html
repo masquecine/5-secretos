@@ -1,0 +1,1315 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>¿De verdad estás viendo la película? · Más Que Cine</title>
+<meta name="description" content="5 secretos que esconden las pelis delante de tus ojos. Por Óscar Gómez, de Más Que Cine.">
+<meta property="og:title" content="¿De verdad estás viendo la película?">
+<meta property="og:description" content="5 secretos que esconden las pelis delante de tus ojos. Por Óscar Gómez.">
+<meta property="og:type" content="website">
+<meta name="theme-color" content="#1A1210">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Caveat:wght@700&family=Fraunces:ital,opsz,wght@0,9..144,600..900;1,9..144,600..900&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+:root{
+  --marron:#1A1210;
+  --marron-2:#2A1E1A;
+  --naranja:#F4963E;
+  --naranja-claro:#F9B761;
+  --crema:#F5ECD9;
+  --gris:#8C7B6B;
+  --rojo:#D7263D;
+}
+*{box-sizing:border-box}
+html{font-size:112.5%;-webkit-text-size-adjust:100%;scroll-behavior:smooth}
+body{margin:0;background:var(--marron);color:var(--crema);font-family:'Inter',system-ui,-apple-system,'Segoe UI',Roboto,sans-serif;line-height:1.55;-webkit-font-smoothing:antialiased;overflow-x:hidden}
+img,svg{max-width:100%}
+button{font:inherit}
+.wrap{max-width:620px;margin:0 auto;padding:0 16px}
+h1,h2,h3{font-family:'Fraunces',Georgia,serif;font-weight:900;line-height:1.08;margin:0}
+h2{font-size:clamp(1.9rem,8vw,2.6rem);margin:6px 0 22px}
+h3{font-size:1.25rem;font-weight:800;margin:0 0 8px}
+p{margin:0 0 .85em}
+.oculto{display:none!important}
+
+/* ---------- BANDAS ---------- */
+.banda{padding:52px 0 60px;position:relative}
+.banda.marron{background:var(--marron);color:var(--crema)}
+.banda.clara{background:var(--crema);color:var(--marron)}
+.seccion{display:none}
+.seccion.abierta{display:block;animation:entra .6s ease both}
+@keyframes entra{from{opacity:0;transform:translateY(18px)}to{opacity:1;transform:none}}
+.tira{height:34px;background-color:var(--marron);
+  background-image:linear-gradient(90deg,var(--naranja) 0 14px,transparent 14px 30px),linear-gradient(90deg,var(--naranja) 0 14px,transparent 14px 30px);
+  background-size:30px 8px,30px 8px;background-repeat:repeat-x;background-position:8px 6px,8px 20px}
+
+/* rotulador */
+.roto{font-family:'Caveat','Comic Sans MS',cursive;font-weight:700;font-size:1.55rem;line-height:1.2;display:inline-block;transform:rotate(-2deg)}
+.marron .roto{color:var(--naranja-claro)}
+.clara .roto{color:var(--marron)}
+.parte{font-family:'Caveat','Comic Sans MS',cursive;font-weight:700;font-size:1.45rem;display:inline-block;transform:rotate(-3deg)}
+.marron .parte{color:var(--naranja-claro)}
+.clara .parte{color:var(--marron)}
+.nota{margin:16px 0 20px}
+
+/* texto estilo Julián */
+.j p{margin:0 0 .9em}
+.j .grande{font-family:'Fraunces',Georgia,serif;font-weight:800;font-size:1.45rem;line-height:1.2}
+.j .pausa{font-family:'Fraunces',Georgia,serif;font-style:italic;font-weight:700;font-size:1.3rem}
+.dim{opacity:.85}
+.marron strong{color:var(--naranja-claro)}
+
+/* ---------- BOTONES ---------- */
+.btn{display:flex;flex-direction:column;align-items:center;justify-content:center;gap:3px;width:100%;max-width:440px;min-height:56px;padding:14px 24px;border-radius:999px;border:0;cursor:pointer;font-weight:700;font-size:1rem;text-align:center;text-decoration:none;line-height:1.25;transition:transform .15s ease,opacity .2s}
+.btn:active{transform:scale(.98)}
+.marron .btn{background:var(--naranja);color:var(--marron)}
+.clara .btn{background:var(--marron);color:var(--crema)}
+.btn.sec{background:transparent!important;border:2px solid currentColor}
+.marron .btn.sec{color:var(--naranja-claro)}
+.clara .btn.sec{color:var(--marron)}
+.btn[disabled]{opacity:.45;cursor:not-allowed}
+.btn-seguir{margin-top:30px}
+.btn .toca{display:block;font-size:.78rem;font-weight:600;opacity:.85;letter-spacing:.01em}
+.toque{font-size:.88rem;font-weight:600;opacity:.8;margin:-4px 0 12px}
+.fila-btn{display:flex;flex-direction:column;gap:12px;margin:18px 0}
+
+/* ---------- OPCIONES ---------- */
+.pregunta{font-family:'Fraunces',Georgia,serif;font-weight:800;font-size:1.3rem;line-height:1.2;margin:24px 0 14px}
+.opc{display:flex;flex-direction:column;gap:10px;margin:0 0 16px}
+.opc button{display:flex;align-items:center;gap:12px;width:100%;min-height:56px;text-align:left;background:var(--crema);color:var(--marron);border:3px solid transparent;border-radius:16px;padding:12px 16px;font-weight:600;font-size:1rem;line-height:1.3;cursor:pointer}
+.opc button .marca{flex:0 0 26px;height:26px;border-radius:50%;border:2px solid var(--marron);display:flex;align-items:center;justify-content:center;font-size:.85rem;font-weight:800}
+.opc button.sel .marca{background:var(--marron);color:var(--crema)}
+.clara .opc button.sel{border-color:var(--marron)}
+.marron .opc button.sel{border-color:var(--naranja-claro)}
+/* en las bandas claras, las tarjetas son blancas para que se distingan del fondo */
+.clara .opc button,.clara .lista-marcas button{background:#FFFDF8;border-color:#E3D6BD;box-shadow:0 2px 0 rgba(26,18,16,.08)}
+.clara .opc button.sel,.clara .lista-marcas button.on{border-color:var(--marron)}
+.clara .tarjeta,.clara .paso153{background:#FFFDF8;border:2px solid #E3D6BD}
+.clara .calc input[type=number]{background:#FFFDF8}
+.opc.bloq button{cursor:default}
+.opc button.ok{border-color:#2f7d3a!important}
+.opc button.ko{opacity:.75}
+.opc.fila{flex-direction:row;flex-wrap:wrap}
+.opc.fila button{flex:1 1 30%;justify-content:center;text-align:center;min-width:92px}
+.veredicto{font-weight:800;font-size:1.05rem;margin:0 0 10px}
+
+/* revelación */
+.revela{display:none;margin-top:22px;padding-left:16px}
+.revela.on{display:block;animation:entra .5s ease both}
+.marron .revela{border-left:4px solid var(--naranja)}
+.clara .revela{border-left:4px solid var(--naranja)}
+.sello{display:inline-flex;align-items:center;gap:8px;border-radius:999px;padding:8px 16px;font-weight:700;font-size:.9rem;margin:14px 0 0}
+.marron .sello{background:var(--naranja);color:var(--marron)}
+.clara .sello{background:var(--marron);color:var(--crema)}
+
+/* tarjeta crema */
+.tarjeta{background:var(--crema);color:var(--marron);border-radius:18px;padding:20px 18px;margin:16px 0}
+.tarjeta strong{color:var(--marron)}
+.tarjeta .roto{color:var(--marron)!important}
+
+/* ---------- BARRA DE PROGRESO ---------- */
+#barra{position:fixed;top:0;left:0;right:0;z-index:60;background:rgba(26,18,16,.96);color:var(--crema);font-size:.78rem;font-weight:600;transform:translateY(-110%);transition:transform .35s ease;padding-top:env(safe-area-inset-top)}
+#barra.on{transform:none}
+#barra .in{max-width:620px;margin:0 auto;padding:9px 16px 8px;display:flex;justify-content:space-between;gap:10px;align-items:center}
+#barra .paso{white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+#barra .sec{white-space:nowrap;color:var(--naranja-claro)}
+#barra .pista{height:4px;background:rgba(245,236,217,.15)}
+#barra .pista i{display:block;height:100%;width:0;background:var(--naranja);transition:width .5s ease}
+
+/* ---------- PORTADA ---------- */
+.portada{min-height:100vh;min-height:100svh;display:flex;align-items:center;padding:36px 0 48px}
+.portada .grid{display:grid;gap:8px}
+.proyector{width:100%;max-width:330px;margin:0 auto 6px;display:block}
+.pildora{display:inline-block;background:var(--naranja);color:var(--marron);font-weight:700;font-size:.9rem;border-radius:999px;padding:7px 16px;margin:6px 0 10px}
+.firma-top{font-family:'Caveat','Comic Sans MS',cursive;font-weight:700;font-size:1.5rem;color:var(--naranja-claro);transform:rotate(-3deg);display:inline-block;margin:0 0 4px 6px}
+.portada h1{font-size:clamp(2.3rem,10.5vw,3.6rem);margin:4px 0 18px;letter-spacing:-.01em}
+.rodeo{position:relative;white-space:nowrap;display:inline-block}
+.rodeo svg{max-width:none;position:absolute;left:-10%;top:-16%;width:120%;height:136%;overflow:visible;pointer-events:none}
+.rodeo path{fill:none;stroke:var(--naranja-claro);stroke-width:4;stroke-linecap:round;stroke-dasharray:640;stroke-dashoffset:640;animation:trazo 1s ease-out 1.5s forwards}
+@keyframes trazo{to{stroke-dashoffset:0}}
+.lede{font-size:1.1rem;margin:0 0 6px}
+.tickets{list-style:none;padding:0;margin:22px 0 14px}
+.ticket{position:relative;display:flex;align-items:stretch;background:var(--naranja);color:var(--marron);border-radius:10px;margin:0 0 10px;min-height:52px;overflow:hidden}
+.ticket::before,.ticket::after{content:"";position:absolute;top:50%;width:18px;height:18px;margin-top:-9px;border-radius:50%;background:var(--marron)}
+.ticket::before{left:-9px}.ticket::after{right:-9px}
+.ticket .num{flex:0 0 64px;display:flex;align-items:center;justify-content:center;font-family:'Fraunces',Georgia,serif;font-weight:900;font-size:1.35rem;border-right:2px dashed rgba(26,18,16,.55)}
+.ticket .txt{display:flex;align-items:center;padding:8px 22px 8px 14px;font-weight:700;line-height:1.25}
+.ticket .txt small{display:block;font-weight:600;opacity:.8;font-size:.8rem}
+.ticket.hecho .num::after{content:" ✓";font-size:1rem}
+.contador{font-weight:700;color:var(--naranja-claro);margin:4px 0 18px}
+
+/* proyector: animación */
+.pr-carrete{transform-box:fill-box;transform-origin:center;animation:gira 2.4s linear .35s infinite}
+.pr-carrete.b{animation-duration:1.9s}
+@keyframes gira{to{transform:rotate(360deg)}}
+.pr-lente{animation:lente .25s steps(2) .3s both}
+@keyframes lente{from{fill:#4a3122}to{fill:#F9B761}}
+.pr-haz{opacity:0;animation:hazOn .9s linear .45s forwards,parpadeo 2.6s linear 1.4s infinite}
+@keyframes hazOn{0%{opacity:0}8%{opacity:.8}14%{opacity:.08}24%{opacity:.85}32%{opacity:.25}46%{opacity:.85}62%{opacity:.55}100%{opacity:.72}}
+@keyframes parpadeo{0%,100%{opacity:.72}17%{opacity:.62}21%{opacity:.76}48%{opacity:.66}52%{opacity:.78}80%{opacity:.68}}
+.pr-logo{opacity:0;animation:logoOn 1.1s linear .7s forwards}
+@keyframes logoOn{0%{opacity:0}18%{opacity:.7}26%{opacity:.12}40%{opacity:.92}50%{opacity:.4}64%{opacity:1}100%{opacity:1}}
+.pr-flash{opacity:0;animation:flash 1.1s linear .7s forwards}
+@keyframes flash{0%{opacity:0}40%{opacity:.55}100%{opacity:0}}
+.pr-polvo circle{opacity:0;animation:polvo 3.6s linear infinite}
+.pr-polvo circle:nth-child(2){animation-delay:1.2s}
+.pr-polvo circle:nth-child(3){animation-delay:2.3s}
+.pr-polvo circle:nth-child(4){animation-delay:3s}
+@keyframes polvo{0%{opacity:0;transform:translate(0,0)}15%{opacity:.9}100%{opacity:0;transform:translate(130px,-10px)}}
+
+/* ---------- KULESHOV ---------- */
+.pantalla{position:relative;aspect-ratio:4/3;background:#0d0907;border:3px solid var(--naranja);border-radius:12px;overflow:hidden;margin:6px 0 14px}
+.pantalla svg.plano{position:absolute;inset:0;width:100%;height:100%;opacity:0;transition:opacity .12s linear}
+.pantalla svg.plano.ver{opacity:1}
+.pantalla .etq{position:absolute;left:10px;top:8px;font-size:.75rem;font-weight:700;background:rgba(26,18,16,.8);color:var(--naranja-claro);padding:3px 10px;border-radius:999px;z-index:2}
+.pantalla .reposo{position:absolute;inset:0;display:flex;align-items:center;justify-content:center;color:var(--naranja-claro);font-weight:700;text-align:center;padding:20px;z-index:1}
+
+/* ---------- TITANIC ---------- */
+.barco{display:block;width:100%;max-width:420px;margin:4px auto 10px}
+
+/* ---------- EL SEXTO SENTIDO ---------- */
+.objetos{display:flex;justify-content:space-around;align-items:flex-start;gap:10px;background:var(--marron-2);border-radius:16px;padding:22px 10px 14px;margin:8px 0 6px}
+.objetos figure{margin:0;text-align:center;font-size:.85rem;font-weight:600;color:var(--crema);flex:1}
+.objetos svg{display:block;margin:0 auto 8px;height:96px;width:auto}
+.tinta{fill:var(--gris);transition:fill 1.2s ease}
+.trazo-t{stroke:var(--gris);transition:stroke 1.2s ease}
+.objetos.lit .tinta{fill:var(--rojo)}
+.objetos.lit .trazo-t{stroke:var(--rojo)}
+
+/* ---------- UP ---------- */
+.formas{display:flex;justify-content:space-around;align-items:flex-end;gap:12px;margin:8px 0 6px;padding:18px 6px 10px;background:rgba(26,18,16,.08);border-radius:16px}
+.formas figure{margin:0;text-align:center;font-weight:800;font-family:'Fraunces',Georgia,serif}
+.formas svg{display:block;margin:0 auto 6px}
+
+/* ---------- VÍDEO ---------- */
+.video{position:relative;aspect-ratio:16/9;background:#000;border-radius:12px;overflow:hidden;margin:12px 0 10px}
+.video iframe,.video>div{position:absolute;inset:0;width:100%;height:100%;border:0}
+.aviso-video{display:none;background:var(--crema);color:var(--marron);border-radius:14px;padding:14px 16px;margin:10px 0;font-weight:600}
+.aviso-video.on{display:block}
+.btn.resalta{box-shadow:0 0 0 4px var(--naranja-claro)}
+.caja-spoiler{border:2px dashed var(--naranja-claro);border-radius:16px;padding:16px 16px 4px;margin:10px 0 18px}
+
+/* ---------- CALCULADORA ---------- */
+.calc .grupo{margin:0 0 22px}
+.calc .grupo > label,.calc .grupo > .lbl{display:block;font-weight:700;margin:0 0 10px;font-size:1.05rem}
+.stepper{display:flex;align-items:center;gap:14px}
+.stepper button{width:56px;height:56px;border-radius:50%;border:0;background:var(--marron);color:var(--crema);font-size:1.6rem;font-weight:700;cursor:pointer}
+.stepper output{min-width:64px;text-align:center;font-family:'Fraunces',Georgia,serif;font-weight:900;font-size:2.2rem}
+.calc input[type=number]{width:100%;max-width:220px;min-height:56px;border-radius:14px;border:3px solid var(--marron);background:var(--crema);color:var(--marron);font-size:1.1rem;padding:10px 14px}
+.resultado{display:none}
+.resultado.on{display:block;animation:entra .5s ease both}
+.resultado .cifra{font-family:'Fraunces',Georgia,serif;font-weight:900;font-size:1.5rem;line-height:1.2;margin:0 0 .5em}
+
+/* ---------- PASOS 15/3 ---------- */
+.paso153{background:var(--crema);color:var(--marron);border-radius:18px;padding:18px 18px 14px;margin:0 0 14px}
+.paso153 .cab{display:flex;align-items:center;gap:12px;margin:0 0 8px}
+.paso153 .n{flex:0 0 40px;height:40px;border-radius:50%;background:var(--marron);color:var(--crema);display:flex;align-items:center;justify-content:center;font-family:'Fraunces',Georgia,serif;font-weight:900;font-size:1.2rem}
+.paso153 h3{margin:0;font-size:1.15rem}
+.paso153 h3 small{display:block;font-family:'Inter',sans-serif;font-weight:600;font-size:.8rem;opacity:.75}
+.check{display:flex;align-items:center;gap:12px;width:100%;min-height:52px;background:transparent;border:2px solid var(--marron);border-radius:999px;color:var(--marron);padding:8px 16px;font-weight:700;cursor:pointer;margin-top:6px;text-align:left}
+.check .caja{flex:0 0 26px;height:26px;border-radius:7px;border:2px solid var(--marron);display:flex;align-items:center;justify-content:center;font-weight:900}
+.check.on{background:var(--marron);color:var(--crema)}
+.check.on .caja{background:var(--naranja);border-color:var(--naranja);color:var(--marron)}
+
+/* ---------- QUIÉN / TESTIMONIO ---------- */
+.cita{margin:22px 0;padding:20px 18px;background:var(--marron-2);border-radius:18px;position:relative}
+.cita p{font-family:'Fraunces',Georgia,serif;font-style:italic;font-weight:700;font-size:1.15rem;line-height:1.35;margin:0 0 10px}
+.cita cite{font-style:normal;font-weight:600;font-size:.9rem;color:var(--naranja-claro)}
+.grande-cita{font-family:'Fraunces',Georgia,serif;font-weight:900;font-style:italic;font-size:1.6rem;line-height:1.15;margin:8px 0 18px}
+
+/* ---------- MARCA LAS TUYAS ---------- */
+.lista-marcas{display:flex;flex-direction:column;gap:10px;margin:8px 0 16px}
+.lista-marcas button{display:flex;gap:12px;align-items:center;width:100%;min-height:56px;text-align:left;background:var(--crema);color:var(--marron);border:3px solid transparent;border-radius:16px;padding:12px 16px;font-weight:600;font-size:1rem;line-height:1.3;cursor:pointer}
+.lista-marcas .caja{flex:0 0 26px;height:26px;border-radius:7px;border:2px solid var(--marron);display:flex;align-items:center;justify-content:center;font-weight:900}
+.lista-marcas button.on{border-color:var(--marron)}
+.lista-marcas button.on .caja{background:var(--marron);color:var(--crema)}
+#msgMarcas{font-family:'Caveat','Comic Sans MS',cursive;font-weight:700;font-size:1.55rem;line-height:1.2;min-height:1.2em;transform:rotate(-1.5deg)}
+
+/* ---------- CTA ---------- */
+.cta-caja{background:var(--crema);color:var(--marron);border-radius:22px;padding:26px 20px;margin:26px 0 8px;text-align:center}
+.cta-caja .btn{background:var(--naranja)!important;color:var(--marron)!important;margin:16px auto 10px;font-size:1.1rem;min-height:64px;box-shadow:0 6px 0 rgba(26,18,16,.25)}
+.cta-caja small{display:block;font-size:.85rem;opacity:.8}
+.firma{font-family:'Caveat','Comic Sans MS',cursive;font-weight:700;font-size:2rem;color:var(--naranja-claro);transform:rotate(-4deg);display:inline-block;margin:6px 0 20px}
+.pd{border-top:2px dashed rgba(245,236,217,.3);padding-top:20px;margin-top:6px}
+.pd a{color:var(--naranja-claro);font-weight:700}
+
+/* botón flotante */
+#flotante{position:fixed;left:16px;right:16px;bottom:calc(14px + env(safe-area-inset-bottom));z-index:50;display:flex;justify-content:center;pointer-events:none;opacity:0;transform:translateY(120%);transition:opacity .3s,transform .35s ease}
+#flotante.on{opacity:1;transform:none}
+#flotante.on a{pointer-events:auto}
+#flotante a{max-width:420px;width:100%;background:var(--naranja);color:var(--marron);box-shadow:0 8px 24px rgba(0,0,0,.45),0 0 0 3px var(--marron)}
+
+/* modo directo */
+#btnDirecto{position:fixed;right:16px;bottom:calc(16px + env(safe-area-inset-bottom));z-index:70;display:flex;flex-direction:column;align-items:flex-end;gap:6px}
+#btnDirecto span{background:var(--crema);color:var(--marron);font-size:.7rem;font-weight:800;border-radius:999px;padding:3px 10px}
+#btnDirecto button{min-height:56px;padding:12px 24px;border-radius:999px;border:0;background:var(--naranja);color:var(--marron);font-weight:800;font-size:1rem;box-shadow:0 6px 18px rgba(0,0,0,.45);cursor:pointer}
+
+/* pie */
+footer{background:var(--marron);color:var(--crema);text-align:center;padding:34px 16px 110px;font-size:.85rem;line-height:1.5}
+footer .nombre{font-family:'Fraunces',Georgia,serif;font-weight:800;font-size:1rem;margin-bottom:6px}
+footer button{background:none;border:2px solid rgba(249,183,97,.6);border-radius:999px;color:var(--naranja-claro);font-weight:600;font-size:.85rem;cursor:pointer;margin-top:14px;min-height:48px;padding:8px 20px}
+footer.corto{padding-top:20px}
+footer .ver{opacity:.6;margin-top:6px}
+
+/* pantallas grandes */
+@media (min-width:900px){
+  .portada .wrap{max-width:1060px}
+  .portada .grid{grid-template-columns:1.1fr .9fr;gap:56px;align-items:center}
+  .proyector{max-width:380px;margin:0 0 6px}
+}
+@media (prefers-reduced-motion: reduce){
+  html{scroll-behavior:auto}
+  *,*::before,*::after{animation-duration:.01ms!important;animation-iteration-count:1!important;animation-delay:0s!important;transition-duration:.01ms!important}
+  .pr-haz{opacity:.72!important}.pr-logo{opacity:1!important}.pr-flash{opacity:0!important}.pr-polvo{display:none}
+  .rodeo path{stroke-dashoffset:0!important}
+}
+</style>
+</head>
+<body>
+<noscript><p style="padding:20px;background:#F4963E;color:#1A1210;font-weight:700">Para ver esta página necesitas activar JavaScript en tu navegador.</p></noscript>
+
+<div id="barra" aria-hidden="true">
+  <div class="in"><span class="paso" id="barraPaso">Paso 1 de 12</span><span class="sec" id="barraSec">🔍 0 de 5</span></div>
+  <div class="pista"><i id="barraPista"></i></div>
+</div>
+
+<!-- ================= PORTADA ================= -->
+<header class="banda marron portada" id="portada">
+  <div class="wrap">
+    <div class="grid">
+      <div>
+        <svg class="proyector" viewBox="0 0 330 150" role="img" aria-label="Logo de Más Que Cine proyectado por un proyector de cine">
+          <defs>
+            <linearGradient id="gHaz" x1="0" x2="1" y1="0" y2="0">
+              <stop offset="0" stop-color="#F9B761" stop-opacity=".95"/>
+              <stop offset="1" stop-color="#F9B761" stop-opacity=".12"/>
+            </linearGradient>
+            <clipPath id="cLogo"><circle cx="262" cy="75" r="58"/></clipPath>
+          </defs>
+          <!-- haz de luz -->
+          <polygon class="pr-haz" points="98,82 98,98 262,135 262,15" fill="url(#gHaz)"/>
+          <g class="pr-polvo" fill="#F5ECD9">
+            <circle cx="112" cy="88" r="1.6"/><circle cx="118" cy="92" r="1.2"/><circle cx="108" cy="86" r="1.4"/><circle cx="122" cy="90" r="1.1"/>
+          </g>
+          <!-- pantalla con el logo -->
+          <circle cx="262" cy="75" r="61" fill="#2A1E1A"/>
+          <image class="pr-logo" href="data:image/jpeg;base64,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" xlink:href="data:image/jpeg;base64,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" x="204" y="17" width="116" height="116" clip-path="url(#cLogo)" preserveAspectRatio="xMidYMid slice"/>
+          <circle class="pr-flash" cx="262" cy="75" r="58" fill="#FFF6E5"/>
+          <circle cx="262" cy="75" r="60" fill="none" stroke="#F4963E" stroke-width="3"/>
+          <!-- proyector -->
+          <g fill="none" stroke="#F4963E" stroke-width="3.2" stroke-linecap="round" stroke-linejoin="round">
+            <g class="pr-carrete"><circle cx="30" cy="40" r="22"/><circle cx="30" cy="40" r="5"/><line x1="30" y1="22" x2="30" y2="33"/><line x1="15" y1="49" x2="24" y2="44"/><line x1="45" y1="49" x2="36" y2="44"/></g>
+            <g class="pr-carrete b"><circle cx="74" cy="36" r="25"/><circle cx="74" cy="36" r="5.5"/><line x1="74" y1="15" x2="74" y2="29"/><line x1="56" y1="47" x2="68" y2="40"/><line x1="92" y1="47" x2="80" y2="40"/></g>
+            <rect x="14" y="66" width="74" height="48" rx="9" fill="#1A1210"/>
+            <line x1="26" y1="114" x2="18" y2="134"/><line x1="76" y1="114" x2="84" y2="134"/>
+            <circle cx="36" cy="90" r="6"/>
+          </g>
+          <rect class="pr-lente" x="86" y="78" width="14" height="24" rx="3" fill="#4a3122" stroke="#F4963E" stroke-width="3"/>
+        </svg>
+        <span class="pildora">🎬 5 secretos · <span class="minutos">10</span> minutos</span><br>
+        <span class="firma-top">de Óscar Gómez</span>
+        <h1>¿De verdad estás <span class="rodeo">viendo<svg viewBox="0 0 220 90" preserveAspectRatio="none" aria-hidden="true"><path d="M30 18 C 80 2, 180 4, 206 30 C 226 52, 178 84, 104 84 C 40 84, 4 66, 10 42 C 16 22, 60 10, 120 10"/></svg></span> la película?</h1>
+      </div>
+      <div>
+        <p class="lede">Hay cosas que pasan delante de tus ojos en cada escena. Y casi nunca las ves.</p>
+        <p class="lede"><strong>Dame <span class="minutos">10</span> minutos y te enseño 5.</strong></p>
+        <ol class="tickets" id="tickets">
+          <li class="ticket"><span class="num">1</span><span class="txt"><span>La misma cara<small>El montaje</small></span></span></li>
+          <li class="ticket"><span class="num">2</span><span class="txt"><span>Un barco que se hunde<small>La música</small></span></span></li>
+          <li class="ticket"><span class="num">3</span><span class="txt"><span>Tres cosas grises<small>El color</small></span></span></li>
+          <li class="ticket"><span class="num">4</span><span class="txt"><span>Un cuadrado y dos círculos<small>Las formas</small></span></span></li>
+          <li class="ticket"><span class="num">5</span><span class="txt"><span>Una puerta que se cierra<small>La cámara</small></span></span></li>
+        </ol>
+        <p class="contador" id="contadorPortada">Secretos descubiertos: 0 de 5</p>
+        <button class="btn" id="btnEmpezar" type="button"><span class="lbl">Empezar →</span><span class="toca">👆 Toca aquí para empezar</span></button>
+      </div>
+    </div>
+  </div>
+</header>
+
+<!-- ================= 1 · DOMINGO ================= -->
+<section class="seccion" id="s1" data-n="1">
+  <div class="tira"></div>
+  <div class="banda clara"><div class="wrap j">
+    <span class="parte">Antes de empezar</span>
+    <h2>Domingo por la noche.</h2>
+    <p>Acaba la peli. Suben los créditos.</p>
+    <p>Y dices lo de siempre: «Pues me ha gustado».</p>
+    <p>Apagas la tele. A dormir.</p>
+    <p class="pausa">Peeero…</p>
+    <p>Durante dos horas, alguien ha estado decidiendo lo que sentías.</p>
+    <p>Cuándo ibas a tener miedo. Cuándo se te iba a encoger el pecho.</p>
+    <p>Y lo ha hecho delante de tus ojos. Sin que te dieras cuenta.</p>
+    <p class="grande">¿No te lo crees?</p>
+    <p>Te lo demuestro en 10 segundos.</p>
+    <button class="btn btn-seguir" type="button" data-sig="2"><span class="lbl">Demuéstramelo →</span><span class="toca">👆 Toca aquí para seguir</span></button>
+  </div></div>
+</section>
+
+<!-- ================= 2 · KULESHOV ================= -->
+<section class="seccion" id="s2" data-n="2">
+  <div class="tira"></div>
+  <div class="banda marron"><div class="wrap j">
+    <span class="parte">Secreto 1 de 5</span>
+    <h2>La misma cara</h2>
+    <p>Te voy a enseñar una escena de tres planos. Como en el cine: uno detrás de otro.</p>
+    <p>Mírala bien.</p>
+
+    <div class="pantalla" id="kPantalla1">
+      <span class="etq oculto">Plano 1</span>
+      <div class="reposo">🎬 Toca el botón de abajo para ver la escena</div>
+      <!-- cara (inventada) -->
+      <svg class="plano p-cara" viewBox="0 0 400 300" aria-hidden="true">
+        <rect width="400" height="300" fill="#2A1E1A"/>
+        <rect x="0" y="230" width="400" height="70" fill="#231915"/>
+        <path d="M110 300 C 120 238, 160 222, 200 222 C 240 222, 280 238, 290 300 Z" fill="#5B3A2A"/>
+        <path d="M178 222 L200 252 L222 222 Z" fill="#F4963E"/>
+        <rect x="184" y="196" width="32" height="34" rx="8" fill="#E9C9A4"/>
+        <ellipse cx="200" cy="140" rx="62" ry="76" fill="#EFD3AF"/>
+        <path d="M138 128 C 136 78, 168 58, 202 58 C 240 58, 266 82, 262 128 C 254 104, 236 92, 204 92 C 172 92, 148 104, 138 128 Z" fill="#3B2A22"/>
+        <ellipse cx="138" cy="146" rx="9" ry="14" fill="#E9C9A4"/>
+        <ellipse cx="262" cy="146" rx="9" ry="14" fill="#E9C9A4"/>
+        <line x1="160" y1="124" x2="186" y2="124" stroke="#3B2A22" stroke-width="5" stroke-linecap="round"/>
+        <line x1="214" y1="124" x2="240" y2="124" stroke="#3B2A22" stroke-width="5" stroke-linecap="round"/>
+        <ellipse cx="173" cy="141" rx="6" ry="6.5" fill="#1A1210"/>
+        <ellipse cx="227" cy="141" rx="6" ry="6.5" fill="#1A1210"/>
+        <path d="M200 146 L194 172 L204 174" fill="none" stroke="#B98B66" stroke-width="3.5" stroke-linecap="round" stroke-linejoin="round"/>
+        <line x1="184" y1="190" x2="216" y2="190" stroke="#8C5A44" stroke-width="4.5" stroke-linecap="round"/>
+      </svg>
+      <!-- plato de sopa -->
+      <svg class="plano p-obj" viewBox="0 0 400 300" aria-hidden="true">
+        <rect width="400" height="300" fill="#2A1E1A"/>
+        <rect x="0" y="190" width="400" height="110" fill="#5B3A2A"/>
+        <ellipse cx="200" cy="196" rx="130" ry="30" fill="#F5ECD9"/>
+        <path d="M100 176 C 100 236, 300 236, 300 176 Z" fill="#F5ECD9"/>
+        <ellipse cx="200" cy="176" rx="100" ry="22" fill="#E8DCC3"/>
+        <ellipse cx="200" cy="178" rx="88" ry="17" fill="#F4963E"/>
+        <circle cx="178" cy="176" r="5" fill="#F9B761"/><circle cx="214" cy="181" r="4" fill="#F9B761"/><circle cx="236" cy="174" r="3.5" fill="#F9B761"/>
+        <path d="M296 196 L360 150" stroke="#C9B9A0" stroke-width="7" stroke-linecap="round"/>
+        <g fill="none" stroke="#F5ECD9" stroke-width="4" stroke-linecap="round" opacity=".55">
+          <path d="M172 140 C 160 120, 186 108, 172 86"/><path d="M204 136 C 192 114, 218 102, 204 78"/><path d="M234 140 C 222 120, 248 108, 234 88"/>
+        </g>
+      </svg>
+    </div>
+    <button class="btn" type="button" id="kVer1"><span class="lbl">▶ Ver la escena</span><span class="toca">👆 Toca aquí para verla</span></button>
+
+    <div id="kP1" class="oculto">
+      <p class="pregunta">¿Qué siente este hombre?</p>
+    <p class="toque">👆 Toca tu respuesta</p>
+      <div class="opc" id="kOpc1" data-q="k1">
+        <button type="button" data-v="hambre"><span class="marca">A</span>Hambre</button>
+        <button type="button" data-v="pena"><span class="marca">B</span>Pena</button>
+        <button type="button" data-v="nada"><span class="marca">C</span>Nada</button>
+      </div>
+    </div>
+
+    <div id="kPaso2" class="oculto">
+      <p style="margin-top:22px">Ahora, otra escena. Mismo hombre.</p>
+      <button class="btn" type="button" id="kVer2"><span class="lbl">▶ Ver la segunda escena</span><span class="toca">👆 Toca aquí para verla</span></button>
+      <div class="pantalla" id="kPantalla2" style="margin-top:16px">
+        <span class="etq oculto">Plano 1</span>
+        <div class="reposo">🎬 Toca el botón de arriba para ver la escena</div>
+        <svg class="plano p-cara" viewBox="0 0 400 300" aria-hidden="true">
+        <rect width="400" height="300" fill="#2A1E1A"/>
+        <rect x="0" y="230" width="400" height="70" fill="#231915"/>
+        <path d="M110 300 C 120 238, 160 222, 200 222 C 240 222, 280 238, 290 300 Z" fill="#5B3A2A"/>
+        <path d="M178 222 L200 252 L222 222 Z" fill="#F4963E"/>
+        <rect x="184" y="196" width="32" height="34" rx="8" fill="#E9C9A4"/>
+        <ellipse cx="200" cy="140" rx="62" ry="76" fill="#EFD3AF"/>
+        <path d="M138 128 C 136 78, 168 58, 202 58 C 240 58, 266 82, 262 128 C 254 104, 236 92, 204 92 C 172 92, 148 104, 138 128 Z" fill="#3B2A22"/>
+        <ellipse cx="138" cy="146" rx="9" ry="14" fill="#E9C9A4"/>
+        <ellipse cx="262" cy="146" rx="9" ry="14" fill="#E9C9A4"/>
+        <line x1="160" y1="124" x2="186" y2="124" stroke="#3B2A22" stroke-width="5" stroke-linecap="round"/>
+        <line x1="214" y1="124" x2="240" y2="124" stroke="#3B2A22" stroke-width="5" stroke-linecap="round"/>
+        <ellipse cx="173" cy="141" rx="6" ry="6.5" fill="#1A1210"/>
+        <ellipse cx="227" cy="141" rx="6" ry="6.5" fill="#1A1210"/>
+        <path d="M200 146 L194 172 L204 174" fill="none" stroke="#B98B66" stroke-width="3.5" stroke-linecap="round" stroke-linejoin="round"/>
+        <line x1="184" y1="190" x2="216" y2="190" stroke="#8C5A44" stroke-width="4.5" stroke-linecap="round"/>
+      </svg>
+        <svg class="plano p-obj" viewBox="0 0 400 300" aria-hidden="true">
+        <rect width="400" height="300" fill="#1E1512"/>
+        <rect x="0" y="222" width="400" height="78" fill="#2A1E1A"/>
+        <path d="M70 196 L120 156 L310 156 L340 196 L310 236 L120 236 Z" fill="#6B4A35"/>
+        <path d="M70 196 L120 156 L310 156 L340 196 Z" fill="#7C5740"/>
+        <line x1="120" y1="196" x2="320" y2="196" stroke="#4A3122" stroke-width="3"/>
+        <circle cx="300" cy="196" r="5" fill="#C9B9A0"/><circle cx="140" cy="196" r="5" fill="#C9B9A0"/>
+        <rect x="42" y="132" width="12" height="70" rx="3" fill="#F5ECD9"/>
+        <path d="M48 112 C 40 122, 44 130, 48 132 C 52 130, 56 122, 48 112 Z" fill="#F9B761"/>
+        <rect x="350" y="132" width="12" height="70" rx="3" fill="#F5ECD9"/>
+        <path d="M356 112 C 348 122, 352 130, 356 132 C 360 130, 364 122, 356 112 Z" fill="#F9B761"/>
+      </svg>
+      </div>
+    </div>
+
+    <div id="kP2" class="oculto">
+      <p class="pregunta">¿Y ahora? ¿Qué siente?</p>
+    <p class="toque">👆 Toca tu respuesta</p>
+      <div class="opc" id="kOpc2" data-q="k2">
+        <button type="button" data-v="hambre"><span class="marca">A</span>Hambre</button>
+        <button type="button" data-v="pena"><span class="marca">B</span>Pena</button>
+        <button type="button" data-v="nada"><span class="marca">C</span>Nada</button>
+      </div>
+      <button class="btn oculto" type="button" id="kRevelar"><span class="lbl">Ver lo que No viste</span><span class="toca">👆 Toca aquí para descubrirlo</span></button>
+    </div>
+
+    <div class="revela" id="kRev">
+      <p class="grande">Era la MISMA cara.</p>
+      <p>Exactamente la misma. No he cambiado ni una línea.</p>
+      <p id="kTexto"></p>
+      <p>Se llama <strong>efecto Kuleshov</strong>.</p>
+      <p>Lev Kuleshov, un cineasta ruso, lo probó hace más de cien años. Montó la cara de un actor junto a otras imágenes.</p>
+      <p>Y, según se cuenta, el público veía en ella emociones distintas.</p>
+      <p class="dim">¿Suena a leyenda? Un poco: aquella película se perdió.</p>
+      <p class="dim">Pero en 2016 unos investigadores lo repitieron con 36 personas. Y concluyeron que el efecto existe.</p>
+      <p class="pausa">¿Te das cuenta?</p>
+      <p>Si una cara quieta te hace sentir cosas distintas…</p>
+      <p class="grande">Imagínate lo que hace una peli entera.</p>
+      <span class="sello">🔓 Secreto descubierto · 1 de 5</span>
+    </div>
+    <button class="btn btn-seguir oculto" type="button" data-sig="3" id="sig3"><span class="lbl">Y espera… que el siguiente es aún mejor →</span><span class="toca">👆 Toca aquí para seguir</span></button>
+  </div></div>
+</section>
+
+<!-- ================= 3 · TITANIC ================= -->
+<section class="seccion" id="s3" data-n="3">
+  <div class="tira"></div>
+  <div class="banda clara"><div class="wrap j">
+    <span class="parte">Secreto 2 de 5</span>
+    <h2>La música</h2>
+    <svg class="barco" viewBox="0 0 420 150" aria-hidden="true">
+      <rect width="420" height="150" rx="14" fill="#1A1210"/>
+      <circle cx="350" cy="34" r="14" fill="#F5ECD9" opacity=".9"/>
+      <g fill="#F5ECD9" opacity=".5"><circle cx="60" cy="24" r="1.6"/><circle cx="120" cy="40" r="1.2"/><circle cx="210" cy="20" r="1.4"/><circle cx="280" cy="48" r="1.1"/><circle cx="390" cy="70" r="1.3"/></g>
+      <g transform="rotate(-9 210 105)">
+        <path d="M80 92 L340 92 L322 120 L96 120 Z" fill="#F4963E"/>
+        <rect x="112" y="76" width="200" height="16" fill="#F9B761"/>
+        <rect x="150" y="54" width="18" height="22" fill="#F4963E"/><rect x="200" y="54" width="18" height="22" fill="#F4963E"/><rect x="250" y="54" width="18" height="22" fill="#F4963E"/>
+        <g fill="#1A1210"><circle cx="130" cy="104" r="2.6"/><circle cx="160" cy="104" r="2.6"/><circle cx="190" cy="104" r="2.6"/><circle cx="220" cy="104" r="2.6"/><circle cx="250" cy="104" r="2.6"/><circle cx="280" cy="104" r="2.6"/></g>
+      </g>
+      <path d="M0 116 C 40 106, 80 126, 120 116 C 160 106, 200 126, 240 116 C 280 106, 320 126, 360 116 C 390 109, 410 118, 420 114 L420 150 L0 150 Z" fill="#2A1E1A"/>
+    </svg>
+    <p>Imagina esto.</p>
+    <p>Un barco enorme se hunde de noche. Entra agua por todas partes.</p>
+    <p>La gente corre. Grita. Busca un bote.</p>
+    <p class="pregunta">Si tú fueras el director… ¿qué música pondrías?</p>
+    <p class="toque">👆 Toca tu respuesta</p>
+    <div class="opc" id="tOpc" data-q="ti">
+      <button type="button" data-v="a"><span class="marca">A</span>Tambores y violines rápidos: que se note el peligro</button>
+      <button type="button" data-v="b"><span class="marca">B</span>Nada de música: solo el agua y los gritos</button>
+      <button type="button" data-v="c"><span class="marca">C</span>Un himno lento, de los que suenan en los funerales</button>
+    </div>
+    <button class="btn oculto" type="button" id="tRevelar"><span class="lbl">Descubrir el truco</span><span class="toca">👆 Toca aquí para descubrirlo</span></button>
+
+    <div class="revela" id="tRev">
+      <p class="veredicto" id="tVeredicto"></p>
+      <p class="grande">James Cameron eligió el himno.</p>
+      <p>En <strong>Titanic</strong> (James Cameron, 1997), mientras el barco se hunde, la orquesta sigue tocando.</p>
+      <p>Y toca «Nearer, My God, to Thee»: <em>«Más cerca, oh Dios, de ti»</em>.</p>
+      <p>Un himno que se ha tocado en funerales.</p>
+      <p class="nota"><span class="roto">Y el pánico se convierte en despedida.</span></p>
+      <p>Mientras suena, la peli te enseña a gente que corre… y a gente que ya No corre. Se despide.</p>
+      <p class="pausa">Y ahora lo mejor:</p>
+      <p>Nadie sabe seguro qué tocó la orquesta de verdad aquella noche de 1912.</p>
+      <p>Unos dijeron que este himno. Uno de los radiotelegrafistas que sobrevivieron, que una pieza llamada «Autumn».</p>
+      <p>Cameron se quedó con el himno.</p>
+      <p>Otro detalle: los músicos que tocan en la peli son músicos de verdad, el grupo I Salonisti. Y ellos mismos grabaron esa música.</p>
+      <p><strong>Escúchala un momento.</strong> E imagina el agua entrando.</p>
+      <div class="video" id="tVideo"><div id="tPlayer"></div></div>
+      <div class="aviso-video" id="tAviso">Vaya… Esta música No se puede escuchar aquí dentro. Ábrela en YouTube con el botón de abajo.</div>
+      <a class="btn sec" id="tYT" href="#" target="_blank" rel="noopener">¿No se oye? Ábrela en YouTube</a>
+      <div class="tarjeta">
+        <p style="margin:0 0 .5em"><strong>Para esta noche:</strong> si tienes la peli a mano, busca esa escena y mírala dos veces.</p>
+        <p style="margin:0">Una, sin sonido. Otra, con sonido. Y fíjate en qué cambia dentro de ti.</p>
+      </div>
+      <span class="sello">🔓 Secreto descubierto · 2 de 5</span>
+    </div>
+    <button class="btn btn-seguir oculto" type="button" data-sig="4" id="sig4"><span class="lbl">Siguiente secreto: el color →</span><span class="toca">👆 Toca aquí para seguir</span></button>
+  </div></div>
+</section>
+
+<!-- ================= 4 · EL SEXTO SENTIDO ================= -->
+<section class="seccion" id="s4" data-n="4">
+  <div class="tira"></div>
+  <div class="banda marron"><div class="wrap j">
+    <span class="parte">Secreto 3 de 5</span>
+    <h2>El color</h2>
+    <p>Mira estas tres cosas.</p>
+    <div class="objetos" id="xObjetos">
+      <figure>
+        <svg viewBox="0 0 80 120" aria-hidden="true"><ellipse class="tinta" cx="40" cy="40" rx="28" ry="34"/><path class="tinta" d="M34 72 L46 72 L40 80 Z"/><path class="trazo-t" d="M40 80 C 34 92, 48 100, 40 118" fill="none" stroke-width="2.5"/></svg>
+        <figcaption>Un globo</figcaption>
+      </figure>
+      <figure>
+        <svg viewBox="0 0 90 120" aria-hidden="true"><path class="tinta" d="M8 118 L8 50 C 8 18, 82 18, 82 50 L82 118 Z"/><line x1="45" y1="34" x2="45" y2="118" stroke="#1A1210" stroke-width="3"/><circle cx="38" cy="78" r="3.5" fill="#1A1210"/><circle cx="52" cy="78" r="3.5" fill="#1A1210"/></svg>
+        <figcaption>La puerta de una iglesia</figcaption>
+      </figure>
+      <figure>
+        <svg viewBox="0 0 120 120" aria-hidden="true"><path class="tinta" d="M60 14 L114 112 L6 112 Z"/><path d="M60 50 L80 112 L40 112 Z" fill="#1A1210"/><line x1="60" y1="6" x2="60" y2="16" stroke="#8C7B6B" stroke-width="3"/></svg>
+        <figcaption>Una tienda de campaña</figcaption>
+      </figure>
+    </div>
+    <p class="pregunta">En una peli muy famosa, las tres tienen algo en común. ¿Qué es?</p>
+    <p class="toque">👆 Toca tu respuesta</p>
+    <div class="opc" id="xOpc" data-q="sx">
+      <button type="button" data-v="color"><span class="marca">A</span>Son del mismo color</button>
+      <button type="button" data-v="escena"><span class="marca">B</span>Salen todas en la misma escena</button>
+      <button type="button" data-v="nada"><span class="marca">C</span>Nada, es casualidad</button>
+    </div>
+    <button class="btn oculto" type="button" id="xRevelar"><span class="lbl">Iluminar lo que se esconde</span><span class="toca">👆 Toca aquí para descubrirlo</span></button>
+
+    <div class="revela" id="xRev">
+      <p class="veredicto" id="xVeredicto"></p>
+      <p class="grande">Las tres son ROJAS.</p>
+      <p>En <strong>El sexto sentido</strong> (M. Night Shyamalan, 1999), el rojo casi No aparece en toda la peli.</p>
+      <p>Shyamalan lo usó con una idea muy clara. Él mismo lo explicó: marcar lo que, en el mundo real, ha tocado el otro mundo.</p>
+      <p>El globo que Cole sigue escaleras arriba en una fiesta. La puerta de la iglesia donde se refugia.</p>
+      <p>Y la tienda de campaña que se monta para sentirse a salvo.</p>
+      <p class="nota"><span class="roto">Cuando ves rojo, algo está a punto de pasar.</span></p>
+      <p>La primera vez No te das cuenta. La segunda, ya No puedes dejar de verlo.</p>
+      <button class="btn sec" type="button" id="xSpoilerBtn" style="margin-top:18px"><span class="lbl">🔒 ¿Ya la has visto? Hay más</span><span class="toca">👆 Toca aquí para verlo (tiene spoiler)</span></button>
+      <div class="caja-spoiler oculto" id="xSpoiler">
+        <p>El pomo rojo de la puerta del sótano, esa que Malcolm intenta abrir una y otra vez.</p>
+        <p>Y el chal rojo de Anna, dormida, en la escena en la que Malcolm por fin lo entiende todo.</p>
+        <p>El rojo te lo estaba contando desde el principio.</p>
+      </div>
+      <span class="sello">🔓 Secreto descubierto · 3 de 5</span>
+    </div>
+    <button class="btn btn-seguir oculto" type="button" data-sig="5" id="sig5"><span class="lbl">Siguiente: las formas →</span><span class="toca">👆 Toca aquí para seguir</span></button>
+  </div></div>
+</section>
+
+<!-- ================= 5 · UP ================= -->
+<section class="seccion" id="s5" data-n="5">
+  <div class="tira"></div>
+  <div class="banda clara"><div class="wrap j">
+    <span class="parte">Secreto 4 de 5</span>
+    <h2>Las formas</h2>
+    <p>Tres personajes. Sin cara. Solo su forma.</p>
+    <div class="formas" aria-hidden="true">
+      <figure><svg width="92" height="104" viewBox="0 0 92 104"><rect x="6" y="12" width="80" height="86" rx="4" fill="#1A1210"/></svg>A</figure>
+      <figure><svg width="92" height="104" viewBox="0 0 92 104"><circle cx="46" cy="58" r="42" fill="#1A1210"/></svg>B</figure>
+      <figure><svg width="70" height="104" viewBox="0 0 70 104"><circle cx="35" cy="72" r="30" fill="#1A1210"/></svg>C</figure>
+    </div>
+    <p class="pregunta">Uno es un viudo gruñón que No quiere salir de su casa. ¿Cuál?</p>
+    <p class="toque">👆 Toca tu respuesta</p>
+    <div class="opc" id="uOpc" data-q="up">
+      <button type="button" data-v="a"><span class="marca">A</span>El cuadrado</button>
+      <button type="button" data-v="b"><span class="marca">B</span>El círculo grande</button>
+      <button type="button" data-v="c"><span class="marca">C</span>El círculo pequeño</button>
+    </div>
+    <button class="btn oculto" type="button" id="uRevelar"><span class="lbl">Descubrir el truco</span><span class="toca">👆 Toca aquí para descubrirlo</span></button>
+
+    <div class="revela" id="uRev">
+      <p class="veredicto" id="uVeredicto"></p>
+      <p class="grande">Es el cuadrado.</p>
+      <p>En <strong>Up</strong> (Pete Docter, 2009), Carl, el viudo, está diseñado a base de cuadrados.</p>
+      <p>Su mujer, Ellie, y Russell, el niño explorador, son redondos.</p>
+      <p>Bob Peterson, codirector de la peli, lo explicó así: un cubo No rueda, es muy estable. Perfecto para Carl.</p>
+      <p>Un círculo rueda y va rápido. Perfecto para Russell.</p>
+      <p class="nota"><span class="roto">La forma te dice quién es antes de que hable.</span></p>
+      <p>Y ojo al detalle: en las fotos de su casa, las de Carl están en marcos cuadrados.</p>
+      <p>Y las de Ellie, en marcos redondos. Lo contó el propio Docter.</p>
+      <span class="sello">🔓 Secreto descubierto · 4 de 5</span>
+    </div>
+    <button class="btn btn-seguir oculto" type="button" data-sig="6" id="sig6"><span class="lbl">El último. Y es mi favorito →</span><span class="toca">👆 Toca aquí para seguir</span></button>
+  </div></div>
+</section>
+
+<!-- ================= 6 · EL PADRINO ================= -->
+<section class="seccion" id="s6" data-n="6">
+  <div class="tira"></div>
+  <div class="banda marron"><div class="wrap j">
+    <span class="parte">Secreto 5 de 5</span>
+    <h2>La jaula o la libertad</h2>
+    <p>Este es mi favorito. Porque va de dónde pone la cámara un director.</p>
+    <p>Y eso casi nunca lo miramos.</p>
+
+    <div class="caja-spoiler" id="gSpoiler">
+      <p><strong>⚠️ Ojo:</strong> es el final de <strong>El padrino</strong> (Francis Ford Coppola, 1972). Si No la has visto, te lo voy a destripar.</p>
+      <div class="fila-btn">
+        <button class="btn" type="button" id="gVer"><span class="lbl">La he visto, adelante</span><span class="toca">👆 Toca aquí para ver el secreto</span></button>
+        <button class="btn sec" type="button" id="gSaltar"><span class="lbl">Prefiero No destripármela</span><span class="toca">👆 Toca aquí y te lo cuento sin spoiler</span></button>
+      </div>
+    </div>
+
+    <div id="gBloqueVer" class="oculto">
+      <p><strong>Contexto en una línea:</strong> Kay le acaba de preguntar a su marido, Michael, si ha mandado matar a su cuñado. Él le dice que No.</p>
+      <p>Mira el clip dos veces. La primera, <strong>sin sonido</strong>: fíjate solo en dónde te pone la cámara. La segunda, con sonido.</p>
+      <p class="dim">El clip está en inglés, pero No te hace falta entender casi nada: todo lo que vamos a descubrir está en la imagen.</p>
+      <div class="video" id="gVideo"><div id="gPlayer"></div></div>
+      <div class="aviso-video" id="gAviso">Vaya… Este clip No se puede ver aquí dentro. Ábrelo en YouTube con el botón de abajo.</div>
+      <a class="btn sec" id="gYT" href="#" target="_blank" rel="noopener">¿No se ve? Ábrelo en YouTube</a>
+      <p class="dim" style="margin-top:10px">Cuando lo hayas visto, vuelve aquí y responde.</p>
+      <p class="pregunta">Al final, cuando le besan la mano a Michael, ¿desde dónde lo ves tú?</p>
+    <p class="toque">👆 Toca tu respuesta</p>
+      <div class="opc" id="gOpc" data-q="gf">
+        <button type="button" data-v="dentro"><span class="marca">A</span>Desde dentro del despacho, al lado de Michael</button>
+        <button type="button" data-v="fuera"><span class="marca">B</span>Desde fuera, al lado de Kay</button>
+        <button type="button" data-v="arriba"><span class="marca">C</span>Desde arriba, como un pájaro</button>
+      </div>
+      <button class="btn oculto" type="button" id="gRevelar"><span class="lbl">Ver lo que No viste</span><span class="toca">👆 Toca aquí para descubrirlo</span></button>
+    </div>
+
+    <div class="revela" id="gRev">
+      <p class="veredicto" id="gVeredicto"></p>
+      <p class="grande">Desde fuera. Con Kay.</p>
+      <p>Coppola te pone a su lado: lo ves todo, pero por el hueco de la puerta. Cerca. Y sin poder hacer nada.</p>
+      <p>Y luego da la vuelta a la cámara: ahora ves la cara de Kay.</p>
+      <p>Y la puerta se cierra delante de ella. Hasta que la pantalla se queda en negro.</p>
+      <p class="nota"><span class="roto">El marco decide quién está dentro… y quién se queda fuera.</span></p>
+      <p>Muchos críticos lo leen así: Kay acaba de quedarse fuera del mundo de Michael. Para siempre.</p>
+      <p>Un detalle más: la peli empieza y termina en el mismo despacho en penumbra.</p>
+      <p>Y Coppola llegó a rodar otro final, con Kay encendiendo velas en una iglesia.</p>
+      <p><strong>Se quedó con la puerta.</strong></p>
+      <span class="sello">🔓 Secreto descubierto · 5 de 5</span>
+    </div>
+
+    <div class="revela" id="gRevSalto">
+      <p>Sin destripar nada: en la próxima peli que veas, fíjate en las puertas, las ventanas y los marcos.</p>
+      <p>Cuando un director mete a un personaje dentro de un marco, a menudo te está contando algo.</p>
+      <p>Que está atrapado… o que se ha quedado fuera.</p>
+      <p class="nota"><span class="roto">Yo lo llamo «la jaula o la libertad».</span></p>
+      <p>Y cuando veas El padrino, mira bien la última puerta.</p>
+      <span class="sello">🔓 Secreto descubierto · 5 de 5</span>
+    </div>
+    <button class="btn btn-seguir oculto" type="button" data-sig="7" id="sig7"><span class="lbl">Ahora, hagamos cuentas →</span><span class="toca">👆 Toca aquí para seguir</span></button>
+  </div></div>
+</section>
+
+<!-- ================= 7 · CALCULADORA ================= -->
+<section class="seccion" id="s7" data-n="7">
+  <div class="tira"></div>
+  <div class="banda clara"><div class="wrap j calc">
+    <span class="parte">Lo loco es…</span>
+    <h2>Cinco secretos. Y tus números.</h2>
+    <p>Cinco escenas. Cinco secretos. Todos delante de tus ojos.</p>
+    <p>Ahora hagamos cuentas. Con tus números, No con los míos.</p>
+
+    <div class="grupo">
+      <span class="lbl">1. ¿Cuántas pelis ves al mes?</span>
+      <div class="stepper">
+        <button type="button" id="cMenos" aria-label="Una peli menos">−</button>
+        <output id="cN" aria-live="polite">0</output>
+        <button type="button" id="cMas" aria-label="Una peli más">+</button>
+      </div>
+    </div>
+    <div class="grupo">
+      <span class="lbl">2. ¿Cuánto te dura una peli normal?</span>
+      <div class="opc fila" id="cDur" data-q="cd">
+        <button type="button" data-v="1.5">1 h 30</button>
+        <button type="button" data-v="2">2 h</button>
+        <button type="button" data-v="2+">Más de 2 h</button>
+      </div>
+    </div>
+    <div class="grupo">
+      <span class="lbl">3. ¿Pagas alguna plataforma?</span>
+      <div class="opc fila" id="cPlat" data-q="cp">
+        <button type="button" data-v="si">Sí</button>
+        <button type="button" data-v="no">No</button>
+      </div>
+      <div id="cCuotaBox" class="oculto">
+        <label for="cCuota" style="display:block;font-weight:600;margin:6px 0 8px">¿Cuánto pagas al mes, más o menos? (si quieres, en €)</label>
+        <input type="number" id="cCuota" inputmode="decimal" min="0" max="999" step="0.01" placeholder="Por ejemplo: 13">
+      </div>
+    </div>
+    <button class="btn" type="button" id="cCalcular" disabled><span class="lbl">Hacer cuentas</span><span class="toca">👆 Toca aquí para ver tus números</span></button>
+    <p class="dim oculto" id="cFalta" style="margin-top:10px"></p>
+
+    <div class="resultado tarjeta" id="cRes">
+      <p class="cifra" id="cL1"></p>
+      <p class="cifra" id="cL2"></p>
+      <p class="cifra oculto" id="cL3"></p>
+      <p class="cifra oculto" id="cL4"></p>
+      <p class="nota" style="margin:18px 0 12px"><span class="roto">¿En cuántas de esas horas estás viendo de verdad?</span></p>
+      <p style="margin:0">No te lo pregunto para que te sientas mal. Te lo pregunto por todo lo que tienes por delante.</p>
+    </div>
+    <button class="btn btn-seguir oculto" type="button" data-sig="8" id="sig8"><span class="lbl">¿Y esto se puede aprender? →</span><span class="toca">👆 Toca aquí para seguir</span></button>
+  </div></div>
+</section>
+
+<!-- ================= 8 · SE APRENDE ================= -->
+<section class="seccion" id="s8" data-n="8">
+  <div class="tira"></div>
+  <div class="banda marron"><div class="wrap j">
+    <span class="parte">La buena noticia</span>
+    <h2>Esto se aprende. Como un idioma.</h2>
+    <p>Te confieso una cosa.</p>
+    <p>Nada de lo que has visto hoy es magia. Es un idioma: la cámara, la luz, el color, la música, el montaje.</p>
+    <p>Y como cualquier idioma, se aprende.</p>
+    <p>Cuando lo aprendes, pasa algo curioso: ya No puedes dejar de verlo. Y las pelis No se vuelven más difíciles. Se disfrutan mucho más.</p>
+    <p class="pausa">Pero falta una pieza.</p>
+    <p>Hace poco pregunté en mi grupo de WhatsApp qué le pasa a la gente al terminar una peli. De 15 personas que respondieron, 12 dijeron lo mismo:</p>
+    <p class="grande-cita">«No tengo con quién comentarla».</p>
+    <p>Y es una pena. Porque lo que tú No ves, lo ve otro. Y al revés.</p>
+    <p class="nota"><span class="roto">Se aprende mirando. Y se disfruta comentando.</span></p>
+    <button class="btn btn-seguir" type="button" data-sig="9"><span class="lbl">Vale, ¿y por dónde empiezo? →</span><span class="toca">👆 Toca aquí para seguir</span></button>
+  </div></div>
+</section>
+
+<!-- ================= 9 · MÉTODO 15/3 ================= -->
+<section class="seccion" id="s9" data-n="9">
+  <div class="tira"></div>
+  <div class="banda clara"><div class="wrap j">
+    <span class="parte">Para aplicar hoy</span>
+    <h2>Tu próxima peli, en 15 minutos</h2>
+    <p>Elige una escena que te encante. Dale 15 minutos. Tres pasos:</p>
+
+    <div class="paso153">
+      <div class="cab"><span class="n">1</span><h3>Sin sonido<small>5 minutos</small></h3></div>
+      <p>Quita el volumen y mira solo la imagen. ¿Qué es lo primero que ves? ¿Qué color manda? ¿Qué sientes sin música?</p>
+      <button type="button" class="check" data-paso="0"><span class="caja"></span>Lo hago en mi próxima peli</button>
+    </div>
+    <div class="paso153">
+      <div class="cab"><span class="n">2</span><h3>La jaula o la libertad<small>5 minutos</small></h3></div>
+      <p>Fíjate en los bordes. ¿Hay puertas, ventanas o marcos alrededor del personaje? ¿Está encerrado o tiene aire?</p>
+      <button type="button" class="check" data-paso="1"><span class="caja"></span>Lo hago en mi próxima peli</button>
+    </div>
+    <div class="paso153">
+      <div class="cab"><span class="n">3</span><h3>La pregunta del director<small>5 minutos</small></h3></div>
+      <p>Ahora, con sonido. Cuando algo te remueva, para y pregúntate: ¿ha sido la música, el color o la cámara?</p>
+      <p>¿Y por qué lo hizo así, justo aquí?</p>
+      <button type="button" class="check" data-paso="2"><span class="caja"></span>Lo hago en mi próxima peli</button>
+    </div>
+    <p class="nota"><span class="roto">No hay respuestas buenas ni malas. Hay preguntas que antes No te hacías.</span></p>
+    <p class="oculto" id="pasosHechos"><strong>Hecho. Tu próxima peli ya No la vas a ver igual.</strong></p>
+    <button class="btn btn-seguir" type="button" data-sig="10"><span class="lbl">¿Y quién te cuenta todo esto? →</span><span class="toca">👆 Toca aquí para seguir</span></button>
+  </div></div>
+</section>
+
+<!-- ================= 10 · QUIÉN ================= -->
+<section class="seccion" id="s10" data-n="10">
+  <div class="tira"></div>
+  <div class="banda marron"><div class="wrap j">
+    <span class="parte">Por cierto</span>
+    <h2>¿Quién te cuenta todo esto?</h2>
+    <p>No me he presentado. Soy <strong>Óscar Gómez</strong>.</p>
+    <p>Llevo más de 10 años dando clases de dirección de cine. Y he dirigido cortos y una peli de terror, <em>Dark Village</em>.</p>
+    <p>A mi lado está mi socio, <strong>Fran Menchón</strong>. Es coguionista de <em>El bus</em>, un corto que ganó el Gaudí y estuvo nominado al Goya.</p>
+    <p>Y de <em>El páramo</em>, una peli de Netflix que estuvo en la Sección Oficial de Sitges.</p>
+    <p class="grande">Pero No te lo cuento para que hagas cine.</p>
+    <p>Te lo cuento porque, cuando sabes dónde mira un director, las pelis te dan mucho más.</p>
+    <p>Y No hace falta saber de cine para disfrutarlo. Mira lo que dice Concha, que ya está en Más Que Cine:</p>
+    <blockquote class="cita">
+      <p>«Con tus amigos nos quedamos en si te ha gustado o No te ha gustado…</p>
+      <p>Aquí profundizamos mucho más y le sacamos un color a las películas que No habíamos apreciado antes».</p>
+      <cite>— Concha, miembro de Más Que Cine</cite>
+    </blockquote>
+    <button class="btn btn-seguir" type="button" data-sig="11"><span class="lbl">Una última cosa antes de irte →</span><span class="toca">👆 Toca aquí para seguir</span></button>
+  </div></div>
+</section>
+
+<!-- ================= 11 · MARCA LAS TUYAS ================= -->
+<section class="seccion" id="s11" data-n="11">
+  <div class="tira"></div>
+  <div class="banda clara"><div class="wrap j">
+    <span class="parte">Antes de irte</span>
+    <h2>Marca las que te suenen</h2>
+    <p>Sin pensarlo mucho. Solo las tuyas.</p>
+    <p class="toque">👆 Toca las frases que te pasen</p>
+    <div class="lista-marcas" id="marcas">
+      <button type="button" data-m="0"><span class="caja"></span>Termino una peli y No tengo con quién comentarla.</button>
+      <button type="button" data-m="1"><span class="caja"></span>Busco análisis en internet para entender lo que me he perdido.</button>
+      <button type="button" data-m="2"><span class="caja"></span>Me quedo en «me ha gustado» o «No me ha gustado», y sé que hay más.</button>
+      <button type="button" data-m="3"><span class="caja"></span>Alguien ha visto en una peli cosas que yo No vi.</button>
+      <button type="button" data-m="4"><span class="caja"></span>He sentido algo fuerte en una escena y No he sabido explicar por qué.</button>
+    </div>
+    <p id="msgMarcas" aria-live="polite"></p>
+    <button class="btn btn-seguir" type="button" data-sig="12"><span class="lbl">Ver mi siguiente paso →</span><span class="toca">👆 Toca aquí para seguir</span></button>
+  </div></div>
+</section>
+
+<!-- ================= 12 · CTA ================= -->
+<section class="seccion" id="s12" data-n="12">
+  <div class="tira"></div>
+  <div class="banda marron"><div class="wrap j">
+    <span class="parte">Tu siguiente paso</span>
+    <h2>2 minutos. Y sales de dudas.</h2>
+    <p>Puedes cerrar esta página y seguir viendo pelis como hasta hoy.</p>
+    <p class="grande">Muchas pelis. Muchas horas. A&nbsp;medias.</p>
+    <p>O puedes tardar 2 minutos en saber si Más Que Cine es para ti.</p>
+    <div class="cta-caja" id="ctaFinal">
+      <p style="margin:0;font-weight:700">Es un test cortito. Al final te digo, con sinceridad, si encaja contigo… o si No.</p>
+      <a class="btn cta-link" id="ctaBtn" href="https://masquecine.github.io/es-para-ti/?origen=leadmagnet"><span class="lbl">Hacer el test de 2&nbsp;minutos&nbsp;→</span><span class="toca">👆 Toca aquí para empezar el test</span></a>
+      <small>Gratis y sin compromiso.</small>
+    </div>
+    <p style="margin-top:20px">Un abrazo,</p>
+    <span class="firma">Óscar</span>
+    <div class="pd">
+      <p><strong>PD:</strong> ¿Te acuerdas del hombre de la sopa?</p>
+      <p>Su cara No cambió ni una línea. Lo que cambió fue lo que sabías de lo que estaba mirando.</p>
+      <p>Con las pelis pasa igual: cuando sabes lo que esconden, ya No las ves igual.</p>
+      <p><a class="cta-link" href="https://masquecine.github.io/es-para-ti/?origen=leadmagnet">👆 Toca aquí para hacer el test →</a></p>
+    </div>
+  </div></div>
+</section>
+
+<footer id="pie" class="oculto">
+  <div id="pieCompleto" class="oculto">
+    <div class="tira" style="margin:-34px -16px 26px"></div>
+    <div class="nombre">¿De verdad estás viendo la película?</div>
+    <div>Óscar Gómez y Fran Menchón · Más Que Cine</div>
+    <div class="dim" style="margin-top:8px">Los clips se ven desde sus canales oficiales de YouTube. Las pelis, siempre en plataformas legales.</div>
+  </div>
+  <button type="button" id="btnReiniciar">↺ Empezar de nuevo</button>
+  <div class="ver oculto" id="version"></div>
+</footer>
+
+<div id="flotante"><a class="btn cta-link" href="https://masquecine.github.io/es-para-ti/?origen=leadmagnet"><span class="lbl">Hacer el test (2 min) →</span><span class="toca">👆 Toca aquí</span></a></div>
+
+<script>
+/* =========================================================
+   CONFIG · todo lo que se puede cambiar está aquí arriba
+   ========================================================= */
+const CONFIG = {
+  // Enlace del Cualificador. El martes 20 se cambia al 2.0 si cambia la dirección.
+  urlCualificador: "https://masquecine.github.io/es-para-ti/",
+  // Origen que se manda al Cualificador si la página se abre sin ?origen=
+  origenPorDefecto: "leadmagnet",
+  // Minutos que promete la portada
+  minutos: 10,
+  // Audio oficial del himno (canal "I Salonisti - Topic")
+  audioTitanic: "H402HL39LKE",
+  // Clip oficial del final de El padrino (canal Movieclips)
+  clipPadrino: { id: "DvD9OryD6mY", inicio: 0, fin: 121 }, // dura 2:33; lo del canal empieza en 2:02, así que corta en 2:01
+  claveMemoria: "mqc_leadmagnet_v1",
+  claveOrigen: "mqc_leadmagnet_origen",
+  version: "1.0"
+};
+
+/* ---------- utilidades ---------- */
+const $ = (s, c=document) => c.querySelector(s);
+const $$ = (s, c=document) => Array.from(c.querySelectorAll(s));
+const PARAMS = new URLSearchParams(location.search);
+const DIRECTO = PARAMS.has("directo");
+const NOMBRES = ["", "Domingo por la noche", "La misma cara", "La música", "El color", "Las formas", "El encuadre", "Tus números", "Se aprende", "Para aplicar hoy", "Quién te lo cuenta", "Marca las tuyas", "Tu siguiente paso"];
+const TOTAL = 12;
+
+function guardarLS(k, v){ if (DIRECTO) return; try{ localStorage.setItem(k, v); }catch(e){} }
+function leerLS(k){ try{ return localStorage.getItem(k); }catch(e){ return null; } }
+function borrarLS(k){ try{ localStorage.removeItem(k); }catch(e){} }
+
+/* ---------- origen ---------- */
+function limpiarOrigen(v){
+  if (!v) return "";
+  v = String(v).toLowerCase().trim().replace(/[^a-z0-9_-]/g, "").slice(0, 40);
+  return v;
+}
+let ORIGEN = limpiarOrigen(PARAMS.get("origen"));
+if (ORIGEN) guardarLS(CONFIG.claveOrigen, ORIGEN);
+else ORIGEN = limpiarOrigen(leerLS(CONFIG.claveOrigen)) || CONFIG.origenPorDefecto;
+function urlTest(){
+  const u = CONFIG.urlCualificador;
+  return u + (u.indexOf("?") === -1 ? "?" : "&") + "origen=" + encodeURIComponent(ORIGEN);
+}
+$$(".cta-link").forEach(a => a.href = urlTest());
+$$(".minutos").forEach(s => s.textContent = CONFIG.minutos);
+$("#version").textContent = "Versión " + CONFIG.version;
+
+/* ---------- estado ---------- */
+const BASE = { u:0, sec:[0,0,0,0,0], k1:null, k2:null, kr:0, ti:null, tr:0, sx:null, xr:0, up:null, ur:0, gm:null, gf:null, gr:0, cn:0, cd:null, cp:null, cc:"", cr:0, pasos:[0,0,0], marcas:[0,0,0,0,0] };
+let S = JSON.parse(JSON.stringify(BASE));
+if (!DIRECTO){
+  try{
+    const g = JSON.parse(leerLS(CONFIG.claveMemoria) || "null");
+    if (g && typeof g === "object") S = Object.assign(S, g);
+  }catch(e){}
+}
+function guardar(){ guardarLS(CONFIG.claveMemoria, JSON.stringify(S)); }
+
+/* ---------- secciones y progreso ---------- */
+function abrir(n, opts={}){
+  if (n < 1 || n > TOTAL) return;
+  const sec = $("#s" + n);
+  if (!sec) return;
+  if (!sec.classList.contains("abierta")){
+    sec.classList.add("abierta");
+    if (n === 3 || n === 6) cargarYT();
+  }
+  if (n > S.u){ S.u = n; guardar(); }
+  actualizarBarra();
+  actualizarFlotante();
+  if (!opts.sinScroll){
+    setTimeout(() => {
+      const y = sec.getBoundingClientRect().top + window.scrollY - 40;
+      window.scrollTo({ top: y, behavior: matchMedia("(prefers-reduced-motion: reduce)").matches ? "auto" : "smooth" });
+    }, 60);
+  }
+}
+function actualizarBarra(){
+  const b = $("#barra");
+  if (S.u >= 1) b.classList.add("on");
+  $("#barraPaso").textContent = "Paso " + S.u + " de " + TOTAL + " · " + NOMBRES[S.u];
+  const n = S.sec.reduce((a,b)=>a+b,0);
+  $("#barraSec").textContent = "🔍 " + n + " de 5";
+  $("#barraPista").style.width = (S.u / TOTAL * 100) + "%";
+  $("#contadorPortada").textContent = "Secretos descubiertos: " + n + " de 5";
+  $$("#tickets .ticket").forEach((t,i) => t.classList.toggle("hecho", !!S.sec[i]));
+  if (S.u >= 1) setLbl($("#btnEmpezar"), "Seguir donde lo dejé →", "Toca aquí para seguir");
+  else setLbl($("#btnEmpezar"), "Empezar →", "Toca aquí para empezar");
+  actualizarPie();
+}
+function actualizarPie(){
+  const pie = $("#pie");
+  pie.classList.toggle("oculto", S.u < 2);           // en portada y sección 1: nada
+  const completo = S.u >= TOTAL;                      // créditos solo al final de todo
+  $("#pieCompleto").classList.toggle("oculto", !completo);
+  $("#version").classList.toggle("oculto", !completo);
+  pie.classList.toggle("corto", !completo);
+}
+function descubrir(i){
+  if (!S.sec[i]){ S.sec[i] = 1; guardar(); }
+  actualizarBarra();
+}
+function mostrar(el){ if (el) el.classList.remove("oculto"); }
+function setLbl(b, txt, toca){ const l = b.querySelector(".lbl"); if (l) l.textContent = txt; else b.textContent = txt; const t = b.querySelector(".toca"); if (t && toca) t.textContent = "👆 " + toca; }
+function ocultar(el){ if (el) el.classList.add("oculto"); }
+
+$("#btnEmpezar").addEventListener("click", () => {
+  if (S.u >= 1) abrir(S.u); else abrir(1);
+});
+$$("[data-sig]").forEach(b => b.addEventListener("click", () => abrir(parseInt(b.dataset.sig, 10))));
+
+/* ---------- opciones genéricas ---------- */
+function marcarOpcion(cont, v){
+  $$("button", cont).forEach(b => b.classList.toggle("sel", b.dataset.v === v));
+}
+function corregir(cont, correcta){
+  cont.classList.add("bloq");
+  $$("button", cont).forEach(b => {
+    b.classList.toggle("ok", b.dataset.v === correcta);
+    b.classList.toggle("ko", b.dataset.v !== correcta && b.classList.contains("sel"));
+  });
+}
+function opciones(id, clave, alElegir){
+  const cont = $(id);
+  $$("button", cont).forEach(b => b.addEventListener("click", () => {
+    if (cont.classList.contains("bloq")) return;
+    S[clave] = b.dataset.v; guardar();
+    marcarOpcion(cont, b.dataset.v);
+    if (alElegir) alElegir(b.dataset.v);
+  }));
+}
+
+/* =========================================================
+   SECRETO 1 · KULESHOV
+   ========================================================= */
+let montando = false;
+function verPlano(pant, cual, etq){
+  $$(".plano", pant).forEach(p => p.classList.toggle("ver", p.classList.contains(cual)));
+  const e = $(".etq", pant); mostrar(e); e.textContent = etq;
+}
+function montaje(pant, alAcabar){
+  if (montando) return;
+  montando = true;
+  ocultar($(".reposo", pant));
+  // que la pantalla quede a la vista mientras se ve la escena
+  pant.scrollIntoView({ behavior: matchMedia("(prefers-reduced-motion: reduce)").matches ? "auto" : "smooth", block: "center" });
+  const t = 1600;
+  verPlano(pant, "p-cara", "Plano 1");
+  setTimeout(() => verPlano(pant, "p-obj", "Plano 2"), t);
+  setTimeout(() => verPlano(pant, "p-cara", "Plano 3"), t*2);
+  setTimeout(() => { montando = false; alAcabar(); }, t*3);
+}
+$("#kVer1").addEventListener("click", () => {
+  montaje($("#kPantalla1"), () => { setLbl($("#kVer1"), "↺ Volver a verla", "Toca aquí para repetirla"); mostrar($("#kP1")); });
+});
+$("#kVer2").addEventListener("click", () => {
+  montaje($("#kPantalla2"), () => { setLbl($("#kVer2"), "↺ Volver a verla", "Toca aquí para repetirla"); mostrar($("#kP2")); });
+});
+opciones("#kOpc1", "k1", () => mostrar($("#kPaso2")));
+opciones("#kOpc2", "k2", () => mostrar($("#kRevelar")));
+function textoKuleshov(){
+  if (!S.k1 || !S.k2) return "";
+  if (S.k1 !== S.k2) return "Le has puesto dos emociones distintas a una cara que No se ha movido. La emoción No estaba en su cara. La has puesto tú.";
+  return "Has elegido lo mismo las dos veces. Buen ojo. Pero aquí ibas avisado: sin música, sin historia y sabiendo que había truco. En una peli, No.";
+}
+function revelarK(){
+  S.kr = 1; guardar();
+  $("#kTexto").textContent = textoKuleshov();
+  $("#kRev").classList.add("on");
+  $("#kOpc1").classList.add("bloq"); $("#kOpc2").classList.add("bloq");
+  ocultar($("#kRevelar"));
+  mostrar($("#sig3"));
+  descubrir(0);
+}
+$("#kRevelar").addEventListener("click", revelarK);
+
+/* =========================================================
+   SECRETO 2 · TITANIC
+   ========================================================= */
+opciones("#tOpc", "ti", () => mostrar($("#tRevelar")));
+function revelarT(){
+  S.tr = 1; guardar();
+  corregir($("#tOpc"), "c");
+  $("#tVeredicto").textContent = S.ti === "c" ? "✅ Has pensado como el director." : "❌ Es lo lógico. Pero el director hizo justo lo contrario.";
+  $("#tRev").classList.add("on");
+  ocultar($("#tRevelar"));
+  mostrar($("#sig4"));
+  descubrir(1);
+  crearReproductor("t");
+}
+$("#tRevelar").addEventListener("click", revelarT);
+$("#tYT").href = "https://www.youtube.com/watch?v=" + CONFIG.audioTitanic;
+
+/* =========================================================
+   SECRETO 3 · EL SEXTO SENTIDO
+   ========================================================= */
+opciones("#xOpc", "sx", () => mostrar($("#xRevelar")));
+function revelarX(){
+  S.xr = 1; guardar();
+  corregir($("#xOpc"), "color");
+  $("#xObjetos").classList.add("lit");
+  $("#xVeredicto").textContent = S.sx === "color" ? "✅ Lo has visto." : "❌ No pasa nada: casi nadie se fija la primera vez.";
+  $("#xRev").classList.add("on");
+  ocultar($("#xRevelar"));
+  mostrar($("#sig5"));
+  descubrir(2);
+}
+$("#xRevelar").addEventListener("click", revelarX);
+$("#xSpoilerBtn").addEventListener("click", () => {
+  const c = $("#xSpoiler"); const abierto = c.classList.toggle("oculto") === false;
+  if (abierto) setLbl($("#xSpoilerBtn"), "🔓 Ocultar el spoiler", "Toca aquí para cerrarlo");
+  else setLbl($("#xSpoilerBtn"), "🔒 ¿Ya la has visto? Hay más", "Toca aquí para verlo (tiene spoiler)");
+});
+
+/* =========================================================
+   SECRETO 4 · UP
+   ========================================================= */
+opciones("#uOpc", "up", () => mostrar($("#uRevelar")));
+function revelarU(){
+  S.ur = 1; guardar();
+  corregir($("#uOpc"), "a");
+  $("#uVeredicto").textContent = S.up === "a" ? "✅ Lo has sentido sin pensarlo." : "❌ Casi. Pero fíjate:";
+  $("#uRev").classList.add("on");
+  ocultar($("#uRevelar"));
+  mostrar($("#sig6"));
+  descubrir(3);
+}
+$("#uRevelar").addEventListener("click", revelarU);
+
+/* =========================================================
+   SECRETO 5 · EL PADRINO
+   ========================================================= */
+$("#gYT").href = "https://www.youtube.com/watch?v=" + CONFIG.clipPadrino.id + (CONFIG.clipPadrino.inicio ? "&t=" + CONFIG.clipPadrino.inicio + "s" : "");
+function modoPadrino(m){
+  S.gm = m; guardar();
+  if (m === "ver"){
+    ocultar($("#gSpoiler"));
+    $("#gRevSalto").classList.remove("on");
+    mostrar($("#gBloqueVer"));
+    crearReproductor("g");
+  } else {
+    // se queda el aviso con "La he visto, adelante"; solo desaparece "Prefiero No destripármela"
+    ocultar($("#gSaltar"));
+    $("#gRevSalto").classList.add("on");
+    mostrar($("#sig7"));
+    descubrir(4);
+  }
+}
+$("#gVer").addEventListener("click", () => modoPadrino("ver"));
+$("#gSaltar").addEventListener("click", () => modoPadrino("saltar"));
+opciones("#gOpc", "gf", () => mostrar($("#gRevelar")));
+function revelarG(){
+  S.gr = 1; guardar();
+  corregir($("#gOpc"), "fuera");
+  $("#gVeredicto").textContent = S.gf === "fuera" ? "✅ Exacto. Te has fijado en la cámara." : "❌ Vuelve a mirar el final. Fíjate en esto:";
+  $("#gRev").classList.add("on");
+  ocultar($("#gRevelar"));
+  mostrar($("#sig7"));
+  descubrir(4);
+}
+$("#gRevelar").addEventListener("click", revelarG);
+
+/* =========================================================
+   YOUTUBE (solo clips y audio oficiales)
+   ========================================================= */
+let ytEstado = "nada"; const ytCola = [];
+const REPRO = {
+  t: { cont:"tPlayer", aviso:"tAviso", yt:"tYT", caja:"tVideo", id:() => CONFIG.audioTitanic, ini:0, fin:null, hecho:false },
+  g: { cont:"gPlayer", aviso:"gAviso", yt:"gYT", caja:"gVideo", id:() => CONFIG.clipPadrino.id, ini:CONFIG.clipPadrino.inicio || 0, fin:CONFIG.clipPadrino.fin, hecho:false }
+};
+function cargarYT(){
+  if (ytEstado !== "nada") return;
+  ytEstado = "cargando";
+  const s = document.createElement("script");
+  s.src = "https://www.youtube.com/iframe_api";
+  s.onerror = () => { ytEstado = "error"; ytCola.splice(0).forEach(k => falloVideo(k)); };
+  document.head.appendChild(s);
+}
+window.onYouTubeIframeAPIReady = function(){ ytEstado = "listo"; ytCola.splice(0).forEach(k => crearReproductor(k)); };
+function falloVideo(k){
+  const r = REPRO[k];
+  ocultar($("#" + r.caja));
+  $("#" + r.aviso).classList.add("on");
+  $("#" + r.yt).classList.add("resalta");
+}
+function crearReproductor(k){
+  const r = REPRO[k];
+  if (r.hecho) return;
+  if (!r.id()){ falloVideo(k); return; }
+  if (ytEstado === "error"){ falloVideo(k); return; }
+  if (ytEstado !== "listo"){ if (!ytCola.includes(k)) ytCola.push(k); cargarYT(); return; }
+  r.hecho = true;
+  const vars = { rel:0, playsinline:1, modestbranding:1, hl:"es", start:r.ini };
+  if (/^https?:$/.test(location.protocol)) vars.origin = location.origin;
+  if (r.fin) vars.end = r.fin;
+  try{
+    new YT.Player(r.cont, {
+      host: "https://www.youtube-nocookie.com",
+      videoId: r.id(),
+      playerVars: vars,
+      events: { onError: () => falloVideo(k) }
+    });
+  }catch(e){ falloVideo(k); }
+}
+
+/* =========================================================
+   CALCULADORA
+   ========================================================= */
+function pintarCalc(){
+  $("#cN").textContent = S.cn;
+  marcarOpcion($("#cDur"), S.cd);
+  marcarOpcion($("#cPlat"), S.cp);
+  $("#cCuotaBox").classList.toggle("oculto", S.cp !== "si");
+  if (S.cc !== "" && $("#cCuota").value === "") $("#cCuota").value = S.cc;
+  const falta = [];
+  if (S.cn < 1) falta.push("cuántas pelis ves");
+  if (!S.cd) falta.push("cuánto te duran");
+  if (!S.cp) falta.push("si pagas plataforma");
+  $("#cCalcular").disabled = falta.length > 0;
+  const f = $("#cFalta");
+  if (falta.length && (S.cn > 0 || S.cd || S.cp)){ f.textContent = "Te falta decirme " + falta.join(", ") + "."; mostrar(f); } else ocultar(f);
+}
+$("#cMenos").addEventListener("click", () => { S.cn = Math.max(0, S.cn - 1); guardar(); pintarCalc(); });
+$("#cMas").addEventListener("click", () => { S.cn = Math.min(99, S.cn + 1); guardar(); pintarCalc(); });
+$$("#cDur button").forEach(b => b.addEventListener("click", () => { S.cd = b.dataset.v; guardar(); pintarCalc(); }));
+$$("#cPlat button").forEach(b => b.addEventListener("click", () => { S.cp = b.dataset.v; guardar(); pintarCalc(); }));
+$("#cCuota").addEventListener("input", e => { S.cc = e.target.value; guardar(); });
+const fmt = n => n.toLocaleString("es-ES", { maximumFractionDigits: 0 });
+function calcular(){
+  if (S.cn < 1 || !S.cd || !S.cp) return;
+  S.cr = 1; guardar();
+  const pelis = S.cn * 12;
+  const mas = S.cd === "2+";
+  const horasPeli = mas ? 2 : parseFloat(S.cd);
+  const horas = Math.round(pelis * horasPeli);
+  const dias = Math.floor(horas / 24);
+  $("#cL1").textContent = "Al año ves unas " + fmt(pelis) + " pelis.";
+  $("#cL2").textContent = (mas ? "Son más de " : "Son unas ") + fmt(horas) + " horas delante de la pantalla.";
+  const l3 = $("#cL3"), l4 = $("#cL4");
+  if (dias >= 1){
+    const justo = !mas && horas % 24 === 0;
+    l3.textContent = (justo ? "Son " : "Más de ") + fmt(dias) + (dias === 1 ? " día entero" : " días enteros") + ", sin parar.";
+    mostrar(l3);
+  } else ocultar(l3);
+  const cuota = parseFloat(String(S.cc).replace(",", "."));
+  if (S.cp === "si"){
+    if (cuota > 0){ l4.textContent = "Y unos " + fmt(cuota * 12) + " € al año en plataformas."; }
+    else { l4.textContent = "Y una plataforma pagada todos los meses."; }
+    mostrar(l4);
+  } else ocultar(l4);
+  $("#cRes").classList.add("on");
+  mostrar($("#sig8"));
+}
+$("#cCalcular").addEventListener("click", () => { calcular(); setTimeout(() => $("#cRes").scrollIntoView({ behavior:"smooth", block:"center" }), 80); });
+
+/* =========================================================
+   PASOS 15/3
+   ========================================================= */
+function pintarPasos(){
+  $$(".check").forEach(b => b.classList.toggle("on", !!S.pasos[+b.dataset.paso]));
+  $$(".check .caja").forEach((c,i) => c.textContent = S.pasos[i] ? "✓" : "");
+  $("#pasosHechos").classList.toggle("oculto", S.pasos.reduce((a,b)=>a+b,0) < 3);
+}
+$$(".check").forEach(b => b.addEventListener("click", () => { const i = +b.dataset.paso; S.pasos[i] = S.pasos[i] ? 0 : 1; guardar(); pintarPasos(); }));
+
+/* =========================================================
+   MARCA LAS TUYAS
+   ========================================================= */
+function pintarMarcas(){
+  $$("#marcas button").forEach(b => { const on = !!S.marcas[+b.dataset.m]; b.classList.toggle("on", on); $(".caja", b).textContent = on ? "✓" : ""; });
+  const n = S.marcas.reduce((a,b)=>a+b,0);
+  let m = "";
+  if (n === 1) m = "Una ya cuenta. El test te dice en 2 minutos si Más Que Cine encaja contigo.";
+  else if (n >= 2 && n <= 3) m = "Esto ya No es casualidad. Le das a las pelis tu tiempo… y te quedas con la mitad.";
+  else if (n >= 4) m = "Te lo digo claro: esto es justo lo que hacemos en Más Que Cine. Haz el test y salimos de dudas.";
+  $("#msgMarcas").textContent = m;
+}
+$$("#marcas button").forEach(b => b.addEventListener("click", () => { const i = +b.dataset.m; S.marcas[i] = S.marcas[i] ? 0 : 1; guardar(); pintarMarcas(); }));
+
+/* =========================================================
+   BOTÓN FLOTANTE
+   ========================================================= */
+let ctaVisible = false;
+function actualizarFlotante(){
+  const on = !DIRECTO && S.u >= 10 && !ctaVisible;
+  $("#flotante").classList.toggle("on", on);
+}
+if ("IntersectionObserver" in window){
+  // Se esconde cuando el botón final (o lo que hay debajo) está en pantalla
+  new IntersectionObserver(es => {
+    es.forEach(e => { ctaVisible = e.isIntersecting || e.boundingClientRect.top < 0; });
+    actualizarFlotante();
+  }, { threshold: 0 }).observe($("#ctaFinal"));
+}
+
+/* =========================================================
+   EMPEZAR DE NUEVO
+   ========================================================= */
+$("#btnReiniciar").addEventListener("click", () => {
+  if (!confirm("¿Empezar de nuevo desde la portada?")) return;
+  borrarLS(CONFIG.claveMemoria);
+  window.scrollTo(0, 0);
+  location.reload();
+});
+
+/* =========================================================
+   MODO DIRECTO (?directo): botón "Siguiente →", No guarda nada
+   ========================================================= */
+if (DIRECTO){
+  const d = document.createElement("div");
+  d.id = "btnDirecto";
+  d.innerHTML = '<span>Modo directo</span><button type="button">Siguiente →</button>';
+  document.body.appendChild(d);
+  $("button", d).addEventListener("click", () => {
+    if (S.u < TOTAL) abrir(S.u + 1);
+  });
+}
+
+/* =========================================================
+   RESTAURAR LO GUARDADO
+   ========================================================= */
+(function restaurar(){
+  for (let i = 1; i <= Math.min(S.u, TOTAL); i++){
+    const sec = $("#s" + i);
+    sec.classList.add("abierta");
+    sec.style.animation = "none";
+  }
+  if (S.u >= 3 || S.u >= 6) { /* el YouTube se carga al revelar */ }
+  // Kuleshov
+  if (S.k1){ mostrar($("#kP1")); marcarOpcion($("#kOpc1"), S.k1); mostrar($("#kPaso2")); setLbl($("#kVer1"), "↺ Volver a verla", "Toca aquí para repetirla"); }
+  if (S.k2){ mostrar($("#kP2")); marcarOpcion($("#kOpc2"), S.k2); setLbl($("#kVer2"), "↺ Volver a verla", "Toca aquí para repetirla"); mostrar($("#kRevelar")); }
+  if (S.kr) revelarK();
+  // Titanic
+  if (S.ti){ marcarOpcion($("#tOpc"), S.ti); mostrar($("#tRevelar")); }
+  if (S.tr) revelarT();
+  // Sexto sentido
+  if (S.sx){ marcarOpcion($("#xOpc"), S.sx); mostrar($("#xRevelar")); }
+  if (S.xr) revelarX();
+  // Up
+  if (S.up){ marcarOpcion($("#uOpc"), S.up); mostrar($("#uRevelar")); }
+  if (S.ur) revelarU();
+  // Padrino
+  if (S.gm){ modoPadrino(S.gm); }
+  if (S.gf){ marcarOpcion($("#gOpc"), S.gf); mostrar($("#gRevelar")); }
+  if (S.gr) revelarG();
+  // Calculadora, pasos y marcas
+  pintarCalc(); if (S.cr) calcular();
+  pintarPasos(); pintarMarcas();
+  actualizarBarra(); actualizarFlotante();
+})();
+</script>
+</body>
+</html>
