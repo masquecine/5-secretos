@@ -72,6 +72,10 @@ p{margin:0 0 .85em}
 .btn[disabled]{opacity:.45;cursor:not-allowed}
 .btn-seguir{margin-top:30px}
 .btn .toca{display:block;font-size:.78rem;font-weight:600;opacity:.85;letter-spacing:.01em}
+.nota-datos{font-size:.8rem;line-height:1.4;opacity:.75;margin:14px 0 0}
+.tally-caja{min-height:240px;margin:6px 0 0}
+.tally-caja iframe{width:100%;border:0;display:block}
+.lista-marcas.bloq button{cursor:default}
 .toque{font-size:.88rem;font-weight:600;opacity:.8;margin:-4px 0 12px}
 .fila-btn{display:flex;flex-direction:column;gap:12px;margin:18px 0}
 
@@ -87,7 +91,7 @@ p{margin:0 0 .85em}
 .clara .opc button,.clara .lista-marcas button{background:#FFFDF8;border-color:#E3D6BD;box-shadow:0 2px 0 rgba(26,18,16,.08)}
 .clara .opc button.sel,.clara .lista-marcas button.on{border-color:var(--marron)}
 .clara .tarjeta,.clara .paso153{background:#FFFDF8;border:2px solid #E3D6BD}
-.clara .calc input[type=number]{background:#FFFDF8}
+.clara .calc input[type=text]{background:#FFFDF8}
 .opc.bloq button{cursor:default}
 .opc button.ok{border-color:#2f7d3a!important}
 .opc button.ko{opacity:.75}
@@ -197,7 +201,7 @@ p{margin:0 0 .85em}
 .stepper{display:flex;align-items:center;gap:14px}
 .stepper button{width:56px;height:56px;border-radius:50%;border:0;background:var(--marron);color:var(--crema);font-size:1.6rem;font-weight:700;cursor:pointer}
 .stepper output{min-width:64px;text-align:center;font-family:'Fraunces',Georgia,serif;font-weight:900;font-size:2.2rem}
-.calc input[type=number]{width:100%;max-width:220px;min-height:56px;border-radius:14px;border:3px solid var(--marron);background:var(--crema);color:var(--marron);font-size:1.1rem;padding:10px 14px}
+.calc input[type=text]{width:100%;max-width:220px;min-height:56px;border-radius:14px;border:3px solid var(--marron);background:var(--crema);color:var(--marron);font-size:1.1rem;padding:10px 14px}
 .resultado{display:none}
 .resultado.on{display:block;animation:entra .5s ease both}
 .resultado .cifra{font-family:'Fraunces',Georgia,serif;font-weight:900;font-size:1.5rem;line-height:1.2;margin:0 0 .5em}
@@ -711,11 +715,12 @@ footer .ver{opacity:.6;margin-top:6px}
       </div>
       <div id="cCuotaBox" class="oculto">
         <label for="cCuota" style="display:block;font-weight:600;margin:6px 0 8px">¿Cuánto pagas al mes, más o menos? (si quieres, en €)</label>
-        <input type="number" id="cCuota" inputmode="decimal" min="0" max="999" step="0.01" placeholder="Por ejemplo: 13">
+        <input type="text" id="cCuota" inputmode="decimal" maxlength="7" autocomplete="off" placeholder="Por ejemplo: 13">
       </div>
     </div>
     <button class="btn" type="button" id="cCalcular" disabled><span class="lbl">Hacer cuentas</span><span class="toca">👆 Toca aquí para ver tus números</span></button>
     <p class="dim oculto" id="cFalta" style="margin-top:10px"></p>
+    <p class="nota-datos">🔒 Tus respuestas se guardan sin tu nombre, solo para mejorar este contenido. Si haces el test, se unirán a tus respuestas del test.</p>
 
     <div class="resultado tarjeta" id="cRes">
       <p class="cifra" id="cL1"></p>
@@ -816,7 +821,15 @@ footer .ver{opacity:.6;margin-top:6px}
       <button type="button" data-m="4"><span class="caja"></span>He sentido algo fuerte en una escena y No he sabido explicar por qué.</button>
     </div>
     <p id="msgMarcas" aria-live="polite"></p>
-    <button class="btn btn-seguir" type="button" data-sig="12"><span class="lbl">Ver mi siguiente paso →</span><span class="toca">👆 Toca aquí para seguir</span></button>
+    <button class="btn btn-seguir" type="button" id="mListo"><span class="lbl">Listo, ya las he marcado →</span><span class="toca">👆 Toca aquí para seguir</span></button>
+
+    <div id="formBox" class="oculto">
+      <p class="grande" style="margin-top:26px">Y una última cosa, solo si te apetece:</p>
+      <div id="tallyCaja" class="tally-caja"></div>
+      <p class="oculto" id="formGracias"><strong>✅ Gracias. Ya está guardado.</strong></p>
+      <p class="nota-datos">🔒 Tus respuestas se guardan sin tu nombre, solo para mejorar este contenido. Si haces el test, se unirán a tus respuestas del test.</p>
+      <button class="btn sec oculto" type="button" id="formPlanB"><span class="lbl">¿No funciona? Sigue sin enviar&nbsp;→</span><span class="toca">👆 Toca aquí para seguir</span></button>
+    </div>
   </div></div>
 </section>
 
@@ -825,13 +838,13 @@ footer .ver{opacity:.6;margin-top:6px}
   <div class="tira"></div>
   <div class="banda marron"><div class="wrap j">
     <span class="parte">Tu siguiente paso</span>
-    <h2>2 minutos. Y sales de dudas.</h2>
+    <h2>4 minutos. Y sales de dudas.</h2>
     <p>Puedes cerrar esta página y seguir viendo pelis como hasta hoy.</p>
     <p class="grande">Muchas pelis. Muchas horas. A&nbsp;medias.</p>
-    <p>O puedes tardar 2 minutos en saber si Más Que Cine es para ti.</p>
+    <p>O puedes tardar 4 minutos en saber si Más Que Cine es para ti.</p>
     <div class="cta-caja" id="ctaFinal">
       <p style="margin:0;font-weight:700">Es un test cortito. Al final te digo, con sinceridad, si encaja contigo… o si No.</p>
-      <a class="btn cta-link" id="ctaBtn" href="https://masquecine.github.io/es-para-ti/?origen=leadmagnet"><span class="lbl">Hacer el test de 2&nbsp;minutos&nbsp;→</span><span class="toca">👆 Toca aquí para empezar el test</span></a>
+      <a class="btn cta-link" id="ctaBtn" href="https://masquecine.github.io/es-para-ti/?origen=leadmagnet"><span class="lbl">Hacer el test de 4&nbsp;minutos&nbsp;→</span><span class="toca">👆 Toca aquí para empezar el test</span></a>
       <small>Gratis y sin compromiso.</small>
     </div>
     <p style="margin-top:20px">Un abrazo,</p>
@@ -856,7 +869,7 @@ footer .ver{opacity:.6;margin-top:6px}
   <div class="ver oculto" id="version"></div>
 </footer>
 
-<div id="flotante"><a class="btn cta-link" href="https://masquecine.github.io/es-para-ti/?origen=leadmagnet"><span class="lbl">Hacer el test (2 min) →</span><span class="toca">👆 Toca aquí</span></a></div>
+<div id="flotante"><a class="btn cta-link" href="https://masquecine.github.io/es-para-ti/?origen=leadmagnet"><span class="lbl">Hacer el test (4 min) →</span><span class="toca">👆 Toca aquí</span></a></div>
 
 <script>
 /* =========================================================
@@ -872,10 +885,15 @@ const CONFIG = {
   // Audio oficial del himno (canal "I Salonisti - Topic")
   audioTitanic: "H402HL39LKE",
   // Clip oficial del final de El padrino (canal Movieclips)
-  clipPadrino: { id: "DvD9OryD6mY", inicio: 0, fin: 121 }, // dura 2:33; lo del canal empieza en 2:02, así que corta en 2:01
+  clipPadrino: { id: "DvD9OryD6mY", inicio: 0, fin: 121.5 }, // dura 2:33; lo del canal empieza en 2:02: la página lo para en 2:01,5
+  // Formulario de Tally de la sección "Marca las que te suenen" (respuestas sin nombre)
+  tallyLeadMagnet: "J1K667",
+  // Segundos hasta enseñar "¿No te funciona? Sigue sin enviar"
+  segundosPlanB: 40,
+  claveCodigo: "mqc_leadmagnet_codigo",
   claveMemoria: "mqc_leadmagnet_v1",
   claveOrigen: "mqc_leadmagnet_origen",
-  version: "1.0"
+  version: "1.1"
 };
 
 /* ---------- utilidades ---------- */
@@ -899,16 +917,25 @@ function limpiarOrigen(v){
 let ORIGEN = limpiarOrigen(PARAMS.get("origen"));
 if (ORIGEN) guardarLS(CONFIG.claveOrigen, ORIGEN);
 else ORIGEN = limpiarOrigen(leerLS(CONFIG.claveOrigen)) || CONFIG.origenPorDefecto;
+/* código sin nombre por persona: LM-XXXXXX (se queda en su móvil) */
+function nuevoCodigo(){
+  const abc = "ABCDEFGHJKLMNPQRSTUVWXYZ23456789"; let c = "";
+  try{ const a = new Uint32Array(6); crypto.getRandomValues(a); a.forEach(n => c += abc[n % abc.length]); }
+  catch(e){ for (let i = 0; i < 6; i++) c += abc[Math.floor(Math.random() * abc.length)]; }
+  return "LM-" + c;
+}
+let CODIGO = leerLS(CONFIG.claveCodigo);
+if (!/^LM-[A-Z0-9]{6}$/.test(CODIGO || "")){ CODIGO = nuevoCodigo(); guardarLS(CONFIG.claveCodigo, CODIGO); }
 function urlTest(){
   const u = CONFIG.urlCualificador;
-  return u + (u.indexOf("?") === -1 ? "?" : "&") + "origen=" + encodeURIComponent(ORIGEN);
+  return u + (u.indexOf("?") === -1 ? "?" : "&") + "origen=" + encodeURIComponent(ORIGEN) + "&codigo=" + encodeURIComponent(CODIGO);
 }
 $$(".cta-link").forEach(a => a.href = urlTest());
 $$(".minutos").forEach(s => s.textContent = CONFIG.minutos);
 $("#version").textContent = "Versión " + CONFIG.version;
 
 /* ---------- estado ---------- */
-const BASE = { u:0, sec:[0,0,0,0,0], k1:null, k2:null, kr:0, ti:null, tr:0, sx:null, xr:0, up:null, ur:0, gm:null, gf:null, gr:0, cn:0, cd:null, cp:null, cc:"", cr:0, pasos:[0,0,0], marcas:[0,0,0,0,0] };
+const BASE = { u:0, sec:[0,0,0,0,0], k1:null, k2:null, kr:0, ti:null, tr:0, sx:null, xr:0, up:null, ur:0, gm:null, gf:null, gr:0, cn:0, cd:null, cp:null, cc:"", cr:0, pasos:[0,0,0], marcas:[0,0,0,0,0], ml:0, fe:0 };
 let S = JSON.parse(JSON.stringify(BASE));
 if (!DIRECTO){
   try{
@@ -1154,13 +1181,31 @@ function crearReproductor(k){
   r.hecho = true;
   const vars = { rel:0, playsinline:1, modestbranding:1, hl:"es", start:r.ini };
   if (/^https?:$/.test(location.protocol)) vars.origin = location.origin;
-  if (r.fin) vars.end = r.fin;
+  if (r.fin) vars.end = Math.floor(r.fin);
+  let vigia = null;
   try{
-    new YT.Player(r.cont, {
+    const pl = new YT.Player(r.cont, {
       host: "https://www.youtube-nocookie.com",
       videoId: r.id(),
       playerVars: vars,
-      events: { onError: () => falloVideo(k) }
+      events: {
+        onError: () => falloVideo(k),
+        // YouTube a veces ignora "end" en el móvil: la página lo para ella misma
+        onStateChange: ev => {
+          if (!r.fin) return;
+          clearInterval(vigia);
+          if (ev.data === 1){
+            vigia = setInterval(() => {
+              try{
+                if (pl.getCurrentTime() >= r.fin){
+                  clearInterval(vigia);
+                  pl.pauseVideo(); pl.seekTo(r.ini || 0, true); pl.pauseVideo();
+                }
+              }catch(e){}
+            }, 250);
+          }
+        }
+      }
     });
   }catch(e){ falloVideo(k); }
 }
@@ -1186,7 +1231,7 @@ $("#cMenos").addEventListener("click", () => { S.cn = Math.max(0, S.cn - 1); gua
 $("#cMas").addEventListener("click", () => { S.cn = Math.min(99, S.cn + 1); guardar(); pintarCalc(); });
 $$("#cDur button").forEach(b => b.addEventListener("click", () => { S.cd = b.dataset.v; guardar(); pintarCalc(); }));
 $$("#cPlat button").forEach(b => b.addEventListener("click", () => { S.cp = b.dataset.v; guardar(); pintarCalc(); }));
-$("#cCuota").addEventListener("input", e => { S.cc = e.target.value; guardar(); });
+$("#cCuota").addEventListener("input", e => { S.cc = e.target.value.replace(/[^0-9.,]/g, "").slice(0, 7); e.target.value = S.cc; guardar(); });
 const fmt = n => n.toLocaleString("es-ES", { maximumFractionDigits: 0 });
 function calcular(){
   if (S.cn < 1 || !S.cd || !S.cp) return;
@@ -1232,12 +1277,70 @@ function pintarMarcas(){
   $$("#marcas button").forEach(b => { const on = !!S.marcas[+b.dataset.m]; b.classList.toggle("on", on); $(".caja", b).textContent = on ? "✓" : ""; });
   const n = S.marcas.reduce((a,b)=>a+b,0);
   let m = "";
-  if (n === 1) m = "Una ya cuenta. El test te dice en 2 minutos si Más Que Cine encaja contigo.";
+  if (n === 1) m = "Una ya cuenta. El test te dice en 4 minutos si Más Que Cine encaja contigo.";
   else if (n >= 2 && n <= 3) m = "Esto ya No es casualidad. Le das a las pelis tu tiempo… y te quedas con la mitad.";
   else if (n >= 4) m = "Te lo digo claro: esto es justo lo que hacemos en Más Que Cine. Haz el test y salimos de dudas.";
   $("#msgMarcas").textContent = m;
 }
-$$("#marcas button").forEach(b => b.addEventListener("click", () => { const i = +b.dataset.m; S.marcas[i] = S.marcas[i] ? 0 : 1; guardar(); pintarMarcas(); }));
+$$("#marcas button").forEach(b => b.addEventListener("click", () => { if (S.ml) return; const i = +b.dataset.m; S.marcas[i] = S.marcas[i] ? 0 : 1; guardar(); pintarMarcas(); }));
+
+/* =========================================================
+   FORMULARIO DE TALLY (respuestas sin nombre)
+   ========================================================= */
+const FRASES = ["sin con quién comentarla", "busca análisis en internet", "se queda en me ha gustado", "otros ven cosas que No vio", "No sabe explicar lo que siente"];
+function urlTally(){
+  const dur = { "1.5":"1h30", "2":"2h", "2+":"mas de 2h" }[S.cd] || "";
+  const frases = FRASES.filter((f,i) => S.marcas[i]).join(", ") || "ninguna";
+  const q = new URLSearchParams({
+    alignLeft:"1", hideTitle:"1", transparentBackground:"1", dynamicHeight:"1",
+    codigo:CODIGO, origen:ORIGEN, pelis_mes:String(S.cn || 0), duracion:dur,
+    plataforma:S.cp || "", cuota:S.cp === "si" ? String(S.cc || "") : "", frases:frases, version:CONFIG.version
+  });
+  return "https://tally.so/embed/" + CONFIG.tallyLeadMagnet + "?" + q.toString();
+}
+let tallyCargado = false, planBTimer = null;
+function cargarTally(){
+  if (tallyCargado) return; tallyCargado = true;
+  const caja = $("#tallyCaja");
+  const f = document.createElement("iframe");
+  f.title = "¿Qué te gustaría descubrir del cine?";
+  f.setAttribute("data-tally-src", urlTally());
+  f.height = "260";
+  caja.appendChild(f);
+  const directo = () => { if (!f.getAttribute("src")) f.src = f.getAttribute("data-tally-src"); };
+  const s = document.createElement("script");
+  s.src = "https://tally.so/widgets/embed.js";
+  s.onload = () => { try{ Tally.loadEmbeds(); }catch(e){} setTimeout(directo, 1500); };
+  s.onerror = () => { directo(); mostrar($("#formPlanB")); };
+  document.head.appendChild(s);
+  planBTimer = setTimeout(() => mostrar($("#formPlanB")), CONFIG.segundosPlanB * 1000);
+}
+function formEnviado(){
+  S.fe = 1; guardar();
+  clearTimeout(planBTimer);
+  ocultar($("#tallyCaja")); ocultar($("#formPlanB"));
+  mostrar($("#formGracias"));
+  abrir(12);
+}
+window.addEventListener("message", e => {
+  if (!/(^|\.)tally\.so$/.test((e.origin || "").replace(/^https?:\/\//, ""))) return;
+  const d = typeof e.data === "string" ? e.data : JSON.stringify(e.data || "");
+  if (d.indexOf("Tally.FormSubmitted") !== -1 && !S.fe) formEnviado();
+});
+function marcasListas(){
+  S.ml = 1; guardar();
+  $("#marcas").classList.add("bloq");
+  ocultar($("#mListo"));
+  if (DIRECTO){ abrir(12); return; }   // en modo directo No se envía nada
+  mostrar($("#formBox"));
+  if (S.fe){ ocultar($("#tallyCaja")); mostrar($("#formGracias")); }
+  else cargarTally();
+}
+$("#mListo").addEventListener("click", () => {
+  marcasListas();
+  if (!DIRECTO) setTimeout(() => $("#formBox").scrollIntoView({ behavior:"smooth", block:"start" }), 80);
+});
+$("#formPlanB").addEventListener("click", () => abrir(12));
 
 /* =========================================================
    BOTÓN FLOTANTE
@@ -1308,6 +1411,7 @@ if (DIRECTO){
   // Calculadora, pasos y marcas
   pintarCalc(); if (S.cr) calcular();
   pintarPasos(); pintarMarcas();
+  if (S.ml && S.u >= 11) marcasListas();
   actualizarBarra(); actualizarFlotante();
 })();
 </script>
